@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Alert View Controller-->
+        <scene sceneID="2Aj-UN-QuK">
+            <objects>
+                <viewController storyboardIdentifier="AlertVC" id="X62-3e-LUa" customClass="AlertViewController" customModule="FoodCalorieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XAW-dP-A8H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wbp-Ff-87i">
+                                <rect key="frame" x="67.5" y="273.5" width="240" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K07-jR-7FL">
+                                        <rect key="frame" x="8" y="46" width="224" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="ADD CUSTOM DATA"/>
+                                        <connections>
+                                            <action selector="customBtn:" destination="X62-3e-LUa" eventType="touchUpInside" id="i9D-nF-fm9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgC-ze-1PI">
+                                        <rect key="frame" x="8" y="8" width="224" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="AdH-La-9ju"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="baseBtn:" destination="X62-3e-LUa" eventType="touchUpInside" id="Gnk-wd-uhQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="606-JC-YLn"/>
+                                    <constraint firstItem="K07-jR-7FL" firstAttribute="leading" secondItem="Wbp-Ff-87i" secondAttribute="leading" constant="8" id="Fvb-zq-KUF"/>
+                                    <constraint firstItem="vgC-ze-1PI" firstAttribute="leading" secondItem="Wbp-Ff-87i" secondAttribute="leading" constant="8" id="KpQ-Fe-o3z"/>
+                                    <constraint firstAttribute="trailing" secondItem="K07-jR-7FL" secondAttribute="trailing" constant="8" id="iYX-4J-ceT"/>
+                                    <constraint firstAttribute="width" constant="240" id="s3S-Su-CCY"/>
+                                    <constraint firstItem="K07-jR-7FL" firstAttribute="top" secondItem="vgC-ze-1PI" secondAttribute="bottom" constant="8" id="syz-IM-2f5"/>
+                                    <constraint firstAttribute="trailing" secondItem="vgC-ze-1PI" secondAttribute="trailing" constant="8" id="tXZ-ka-cci"/>
+                                    <constraint firstItem="vgC-ze-1PI" firstAttribute="top" secondItem="Wbp-Ff-87i" secondAttribute="top" constant="8" id="w1N-pO-ZXq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Wbp-Ff-87i" firstAttribute="centerX" secondItem="XAW-dP-A8H" secondAttribute="centerX" id="hRy-nI-U57"/>
+                            <constraint firstItem="Wbp-Ff-87i" firstAttribute="centerY" secondItem="XAW-dP-A8H" secondAttribute="centerY" id="v57-rf-1ZT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="InD-2a-fBQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oVN-hg-LbN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-549" y="-431"/>
+        </scene>
+    </scenes>
+</document>

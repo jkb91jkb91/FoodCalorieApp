@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertController" customModule="FoodCalorieApp" customModuleProvider="target">
+            <connections>
+                <outlet property="CenterY" destination="V7h-23-V3K" id="qxd-GU-ZhV"/>
+                <outlet property="alertView" destination="nwC-0q-dqt" id="QnI-G2-cGA"/>
+                <outlet property="bottomButton" destination="Uyp-mG-bsx" id="FGH-LA-fgP"/>
+                <outlet property="height" destination="Y0U-bY-5tP" id="kOv-fZ-5Ed"/>
+                <outlet property="mainView" destination="fej-J0-ZtE" id="wbl-lI-Gdo"/>
+                <outlet property="parentView" destination="iN0-l3-epB" id="FQk-38-1OV"/>
+                <outlet property="topButton" destination="Jh3-Kd-rnK" id="0ki-cd-FcI"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="287" height="389"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fej-J0-ZtE">
+                    <rect key="frame" x="0.0" y="0.0" width="287" height="389"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nwC-0q-dqt">
+                            <rect key="frame" x="43.5" y="134.5" width="200" height="120"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jh3-Kd-rnK">
+                                    <rect key="frame" x="10" y="10" width="180" height="45"/>
+                                    <color key="backgroundColor" red="0.069247712040000006" green="1" blue="0.094184151940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="IMh-5M-In0"/>
+                                        <constraint firstAttribute="width" constant="180" id="on4-k9-g7Q"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <state key="normal" title="BASE OF FOODS">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uyp-mG-bsx">
+                                    <rect key="frame" x="10" y="65" width="180" height="45"/>
+                                    <color key="backgroundColor" red="0.069247712040000006" green="1" blue="0.094184151940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="Wxi-3I-Qbb"/>
+                                        <constraint firstAttribute="width" constant="180" id="ry9-hK-2r9"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <state key="normal" title="YOUR OWN PRODUCT">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="Uyp-mG-bsx" firstAttribute="centerX" secondItem="nwC-0q-dqt" secondAttribute="centerX" id="39j-vQ-DL8"/>
+                                <constraint firstItem="Jh3-Kd-rnK" firstAttribute="centerX" secondItem="nwC-0q-dqt" secondAttribute="centerX" id="Bee-Gn-51z"/>
+                                <constraint firstItem="Jh3-Kd-rnK" firstAttribute="top" secondItem="nwC-0q-dqt" secondAttribute="top" constant="10" id="DcZ-FH-HKK"/>
+                                <constraint firstAttribute="width" constant="200" id="OF2-H3-mEL"/>
+                                <constraint firstItem="Uyp-mG-bsx" firstAttribute="top" secondItem="Jh3-Kd-rnK" secondAttribute="bottom" constant="10" id="Xwh-JP-i2r"/>
+                                <constraint firstAttribute="height" constant="120" id="Y0U-bY-5tP"/>
+                                <constraint firstItem="Jh3-Kd-rnK" firstAttribute="top" secondItem="nwC-0q-dqt" secondAttribute="top" constant="10" id="dwx-4p-xKQ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.61267605633802813" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="nwC-0q-dqt" firstAttribute="centerY" secondItem="fej-J0-ZtE" secondAttribute="centerY" id="V7h-23-V3K"/>
+                        <constraint firstItem="nwC-0q-dqt" firstAttribute="centerX" secondItem="fej-J0-ZtE" secondAttribute="centerX" id="mDs-eD-PEZ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="fej-J0-ZtE" secondAttribute="bottom" id="GUr-I1-JW7"/>
+                <constraint firstItem="fej-J0-ZtE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="L9F-Od-kJy"/>
+                <constraint firstItem="fej-J0-ZtE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hug-i6-Qkf"/>
+                <constraint firstAttribute="trailing" secondItem="fej-J0-ZtE" secondAttribute="trailing" id="jzU-qw-Qql"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="357.60000000000002" y="43.628185907046479"/>
+        </view>
+    </objects>
+</document>

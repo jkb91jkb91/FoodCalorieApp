@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45C1DDDD635AC386FFC23D10 /* Pods_FoodCalorieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D5C9C0E80D1C8576DD8FE5 /* Pods_FoodCalorieApp.framework */; };
 		C945F43223030F47001CBABB /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = C945F43123030F47001CBABB /* Object.swift */; };
 		C948EFA122FAC61400179711 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C948EFA022FAC61400179711 /* TableViewCell.swift */; };
 		C948EFA322FAD7DE00179711 /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C948EFA222FAD7DE00179711 /* TableData.swift */; };
@@ -28,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DD3AD2C4F6C80E94E359F53 /* Pods-FoodCalorieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCalorieApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodCalorieApp/Pods-FoodCalorieApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B51B2CE10DE94ED3209EB232 /* Pods-FoodCalorieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCalorieApp.release.xcconfig"; path = "Target Support Files/Pods-FoodCalorieApp/Pods-FoodCalorieApp.release.xcconfig"; sourceTree = "<group>"; };
 		C945F43123030F47001CBABB /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		C948EFA022FAC61400179711 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		C948EFA222FAD7DE00179711 /* TableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableData.swift; sourceTree = "<group>"; };
@@ -48,6 +51,7 @@
 		C97301FC22F882D00071B8E5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C973020122F89E940071B8E5 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		C9F4D3C222F97EF000E094E5 /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
+		F6D5C9C0E80D1C8576DD8FE5 /* Pods_FoodCalorieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodCalorieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,21 +59,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45C1DDDD635AC386FFC23D10 /* Pods_FoodCalorieApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A63580CB1FBFC7584115354 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1DD3AD2C4F6C80E94E359F53 /* Pods-FoodCalorieApp.debug.xcconfig */,
+				B51B2CE10DE94ED3209EB232 /* Pods-FoodCalorieApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		813327987C7C9773B6B471F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6D5C9C0E80D1C8576DD8FE5 /* Pods_FoodCalorieApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C94D6BFE2302BB85002691A0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				C97301E622F864810071B8E5 /* StartViewController.swift */,
+				C9F4D3C222F97EF000E094E5 /* TableController.swift */,
+				C958E69822FC5B0C006388F9 /* DetailViewController.swift */,
+				C97301FA22F87C7F0071B8E5 /* ResultViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		C94D6C002302BC22002691A0 /* Model */ = {
+		C94D6C052302BCA1002691A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				C948EFA222FAD7DE00179711 /* TableData.swift */,
@@ -77,87 +102,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C94D6C012302BC2B002691A0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C948EFA022FAC61400179711 /* TableViewCell.swift */,
-				C94D6C0A2302C3BF002691A0 /* View.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C94D6C022302BC30002691A0 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				C9F4D3C222F97EF000E094E5 /* TableController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		C94D6C042302BC7A002691A0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C94AFF8523005EEE00C13B62 /* Cell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C94D6C052302BCA1002691A0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		C94D6C062302BCA9002691A0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C94D6C0C2302CED7002691A0 /* ViewForDetailViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C94D6C072302BCAF002691A0 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				C958E69822FC5B0C006388F9 /* DetailViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		C958E69522FC5719006388F9 /* 1-Screen -Starter */ = {
-			isa = PBXGroup;
-			children = (
-				C94D6BFE2302BB85002691A0 /* Controller */,
-				C97301F722F865CB0071B8E5 /* View */,
-			);
-			path = "1-Screen -Starter";
-			sourceTree = "<group>";
-		};
-		C958E69622FC5779006388F9 /* 2-Screen Table */ = {
-			isa = PBXGroup;
-			children = (
-				C94D6C022302BC30002691A0 /* Controller */,
-				C94D6C012302BC2B002691A0 /* View */,
-				C94D6C002302BC22002691A0 /* Model */,
-			);
-			path = "2-Screen Table";
-			sourceTree = "<group>";
-		};
-		C958E69722FC57CF006388F9 /* 4-Screen DataBase */ = {
-			isa = PBXGroup;
-			children = (
-				C94D6C042302BC7A002691A0 /* View */,
-				C97301F822F865DB0071B8E5 /* Controller */,
-			);
-			path = "4-Screen DataBase";
-			sourceTree = "<group>";
-		};
 		C97301D822F864810071B8E5 = {
 			isa = PBXGroup;
 			children = (
 				C97301E322F864810071B8E5 /* FoodCalorieApp */,
 				C97301E222F864810071B8E5 /* Products */,
+				6A63580CB1FBFC7584115354 /* Pods */,
+				813327987C7C9773B6B471F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,12 +123,11 @@
 		C97301E322F864810071B8E5 /* FoodCalorieApp */ = {
 			isa = PBXGroup;
 			children = (
+				C94D6C052302BCA1002691A0 /* Model */,
+				C94D6BFE2302BB85002691A0 /* Controller */,
+				C97301F722F865CB0071B8E5 /* View */,
 				C97301F622F865B30071B8E5 /* Global */,
 				C973020022F89E6A0071B8E5 /* Networking */,
-				C958E69522FC5719006388F9 /* 1-Screen -Starter */,
-				C958E69622FC5779006388F9 /* 2-Screen Table */,
-				C958E69722FC57CF006388F9 /* 4-Screen DataBase */,
-				C976B20D22FAEB5D002C746B /* 3-Screen Details */,
 				C97301F922F867290071B8E5 /* Extensions */,
 				C97301EB22F864820071B8E5 /* Assets.xcassets */,
 				C97301ED22F864820071B8E5 /* LaunchScreen.storyboard */,
@@ -198,16 +148,12 @@
 			isa = PBXGroup;
 			children = (
 				C94D6C082302BD40002691A0 /* ButtonClass.swift */,
+				C94D6C0A2302C3BF002691A0 /* View.swift */,
+				C948EFA022FAC61400179711 /* TableViewCell.swift */,
+				C94AFF8523005EEE00C13B62 /* Cell.swift */,
+				C94D6C0C2302CED7002691A0 /* ViewForDetailViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		C97301F822F865DB0071B8E5 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				C97301FA22F87C7F0071B8E5 /* ResultViewController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		C97301F922F867290071B8E5 /* Extensions */ = {
@@ -229,16 +175,6 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		C976B20D22FAEB5D002C746B /* 3-Screen Details */ = {
-			isa = PBXGroup;
-			children = (
-				C94D6C072302BCAF002691A0 /* Controller */,
-				C94D6C062302BCA9002691A0 /* View */,
-				C94D6C052302BCA1002691A0 /* Model */,
-			);
-			path = "3-Screen Details";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,9 +182,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C97301F322F864820071B8E5 /* Build configuration list for PBXNativeTarget "FoodCalorieApp" */;
 			buildPhases = (
+				C3FFD6BE91B312B2DC4B8960 /* [CP] Check Pods Manifest.lock */,
 				C97301DD22F864810071B8E5 /* Sources */,
 				C97301DE22F864810071B8E5 /* Frameworks */,
 				C97301DF22F864810071B8E5 /* Resources */,
+				872317A74CAFE28D615392C0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -303,6 +241,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		872317A74CAFE28D615392C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodCalorieApp/Pods-FoodCalorieApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodCalorieApp/Pods-FoodCalorieApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodCalorieApp/Pods-FoodCalorieApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3FFD6BE91B312B2DC4B8960 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FoodCalorieApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C97301DD22F864810071B8E5 /* Sources */ = {
@@ -460,6 +440,7 @@
 		};
 		C97301F422F864820071B8E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DD3AD2C4F6C80E94E359F53 /* Pods-FoodCalorieApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -477,6 +458,7 @@
 		};
 		C97301F522F864820071B8E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B51B2CE10DE94ED3209EB232 /* Pods-FoodCalorieApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

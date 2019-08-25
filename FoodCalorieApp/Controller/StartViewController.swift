@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class StartViewController: UIViewController {
     
@@ -40,10 +41,14 @@ class StartViewController: UIViewController {
         let buttonFromVIew = viewInstance.button
         view.addSubview(buttonFromVIew)
         
-        buttonFromVIew.topAnchor.constraint(equalTo: view.topAnchor, constant: 250).isActive = true
-        buttonFromVIew.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        buttonFromVIew.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        buttonFromVIew.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        buttonFromVIew.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(250)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(300)
+            make.height.equalTo(50)
+        }
+        
     }
 }
 

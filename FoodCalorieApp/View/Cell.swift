@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class Cell: UICollectionViewCell {
+class CollectionCell: UICollectionViewCell {
     
     
     
@@ -20,6 +20,8 @@ class Cell: UICollectionViewCell {
         
         
     }
+    
+ 
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -71,7 +73,7 @@ class Cell: UICollectionViewCell {
         
         
         Namelabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(2)
+            make.topMargin.equalToSuperview().offset(2)
             make.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().offset(10)
             make.height.equalToSuperview().offset(30)

@@ -74,7 +74,7 @@ class ResultViewController: UINavigationController, UICollectionViewDelegateFlow
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! Cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionCell
         
         
         
@@ -120,20 +120,6 @@ class ResultViewController: UINavigationController, UICollectionViewDelegateFlow
         }
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-    
-        
-        
-        
-        
-        
         return cell
     }
     
@@ -143,7 +129,7 @@ class ResultViewController: UINavigationController, UICollectionViewDelegateFlow
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.register(Cell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(CollectionCell.self, forCellWithReuseIdentifier: "cell")
  
         addConstraint()
         collectionView.delegate = self

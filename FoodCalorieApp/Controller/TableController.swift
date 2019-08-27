@@ -9,15 +9,13 @@
 import UIKit
 import ObjectiveC
 
-var viewInstance = ViewRepresantation()
-var table = viewInstance.table
 
 
 class TableController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
   
     
-    
+    var tcv : TcV!
  
     
     
@@ -25,13 +23,13 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
         super.viewDidLoad()
         
         addConstraints()
-        table.register(TableViewCell.self, forCellReuseIdentifier: "cell")
-        table.dataSource = self
-        table.delegate = self
+        tcv.table.register(TableViewCell.self, forCellReuseIdentifier: "cell")
+        tcv.table.dataSource = self
+        tcv.table.delegate = self
         
-        viewInstance.button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-        viewInstance.arrowButton1.addTarget(self, action: #selector(rightArrowAction), for: .touchUpInside)
-        viewInstance.arrowButton2.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
+        tcv.button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
+        tcv.arrowButton1.addTarget(self, action: #selector(rightArrowAction), for: .touchUpInside)
+        tcv.arrowButton2.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
     
       
         
@@ -48,16 +46,14 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
     override func viewWillAppear(_ animated: Bool) {
         
         let data = TableData.shared
-        print(     data.productArray)
-        print(     data.calorieArray)
-        print(     data.proteinArray)
-        print(     data.carbohydrateArray)
-        print(     data.fatArray)
         
         if data.productArray.count >= 0 {
-            table.reloadData()
+            tcv.table.reloadData()
             
            updateLabels()
+        
+           
+        
         }
     }
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -73,7 +69,7 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let data = TableData.shared
-guard let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
+guard let cell = tcv.table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
             return UITableViewCell() }
         if data.productArray[data.count].isEmpty == false   {
          cell.Namelabel.text = TableData.shared.productArray[data.count][(indexPath.row)] }
@@ -106,53 +102,31 @@ guard let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPat
 
     func addConstraints() {
         
-        
-        let tableView = table
-        let bottomView = viewInstance.bottomView
-        let button = viewInstance.button
-        let topView = viewInstance.topView
-        let label = viewInstance.label
-        
-        
-        
-        
-        let proteinlabel = viewInstance.proteinlabel
-        let carblabel = viewInstance.carblabel
-        let fatlabel = viewInstance.fatlabel
-        
-        let stack = viewInstance.createStackView(view1: proteinlabel, view2: carblabel, view3: fatlabel)
-        
-        
-        //let dateLabel = viewInstance.dateLabel
-        let arrowButton1 = viewInstance.arrowButton1
-        let arrowButton2 = viewInstance.arrowButton2
-        
-        let proteinLabelText = viewInstance.proteinLabelText
-        let carbLabelText = viewInstance.carbLabelText
-        let fatLabelText = viewInstance.fatLabelText
-        
-        let stack2 = viewInstance.createStackView(view1: proteinLabelText, view2: carbLabelText, view3: fatLabelText)
-        
+        let tableView = tcv.table
+        let bottomView = tcv.bottomView
+        let button = tcv.button
+        let topView = tcv.topView
+        let label = tcv.label
+        let proteinlabel = tcv.proteinlabel
+        let carblabel = tcv.carblabel
+        let fatlabel = tcv.fatlabel
+        let stack = tcv.createStackView(view1: proteinlabel, view2: carblabel, view3: fatlabel)
+        let arrowButton1 = tcv.arrowButton1
+        let arrowButton2 = tcv.arrowButton2
+        let dateLbl = tcv.dateLabel
+        let stack3 = tcv.createStackView(view1: arrowButton2, view2: dateLbl, view3: arrowButton1)
+        let proteinLabelText = tcv.proteinLabelText
+        let carbLabelText = tcv.carbLabelText
+        let fatLabelText = tcv.fatLabelText
+        let stack2 = tcv.createStackView(view1: proteinLabelText, view2: carbLabelText, view3: fatLabelText)
         view.addSubview(tableView)
         view.addSubview(bottomView)
         view.addSubview(button)
         view.addSubview(topView)
         view.addSubview(label)
-       
-        
-        //topView.addSubview(proteinlabel)
-        //topView.addSubview(carblabel)
-        //topView.addSubview(fatlabel)
         topView.addSubview(stack)
-        
-        //topView.addSubview(proteinLabelText)
-        //topView.addSubview(carbLabelText)
-        //topView.addSubview(fatLabelText)
         topView.addSubview(stack2)
-        
-        //bottomView.addSubview(dateLabel)
-        bottomView.addSubview(arrowButton1)
-        bottomView.addSubview(arrowButton2)
+        bottomView.addSubview(stack3)
         
         tableView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 0).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:   0).isActive = true
@@ -178,76 +152,32 @@ guard let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPat
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         label.heightAnchor.constraint(equalToConstant: 60).isActive = true
         label.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        
-        
-        //proteinlabel.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -30).isActive = true
-        //proteinlabel.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 20).isActive = true
-       // proteinlabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-       // proteinlabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        //carblabel.bottomAnchor.constraint(equalTo:topView.bottomAnchor, constant: -30).isActive = true
-        //carblabel.leadingAnchor.constraint(equalTo: proteinlabel.trailingAnchor, constant: 5).isActive = true
-        //carblabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        //carblabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        
-        //fatlabel.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -30).isActive = true
-        //fatlabel.leadingAnchor.constraint(equalTo: carblabel.trailingAnchor, constant: 5).isActive = true
-       // fatlabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-       // fatlabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        
+    
         stack.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -32).isActive = true
         stack.heightAnchor.constraint(equalToConstant: 20).isActive = true
         stack.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 0).isActive = true
         stack.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: 0).isActive = true
-        
-        
         
         stack2.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -2).isActive = true
         stack2.heightAnchor.constraint(equalToConstant: 20).isActive = true
         stack2.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 0).isActive = true
         stack2.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: 0).isActive = true
         
-        
-    
-       // dateLabel.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: 0).isActive = true
-       // dateLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor, constant: 0).isActive = true
-        //dateLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        //dateLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        arrowButton1.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: 100).isActive = true
-        arrowButton1.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor, constant: 0).isActive = true
-        arrowButton1.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        arrowButton1.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        arrowButton2.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: -100).isActive = true
-        arrowButton2.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor, constant: 0).isActive = true
-        arrowButton2.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        arrowButton2.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
+        stack3.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: 0).isActive = true
+        stack3.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor, constant: 0).isActive = true
+        stack3.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        stack3.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-    
-   /* func date() -> String {
+
+    func setDate() {
         
-        let dateformat = DateFormatter()
-        dateformat.dateFormat = "yyyy-MM-dd"
-        let date = Date()
-        let dateString = dateformat.string(from: date)
-        return dateString
+  
         
-        let modifiedDate = Calendar.current.date(byAdding: .day, value: 1, to: date)
-      
+        
+        
         
     }
-    */
-    
-        
-        
-        
-        
-    
         
         
     
@@ -281,11 +211,11 @@ guard let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPat
             data.carbohydrateArray.append([Int]())
             data.fatArray.append([Int]())
             data.calorieArray.append([Int]())
-            table.reloadData()
+            tcv.table.reloadData()
             
         }
         if data.count > 0 {
-            table.reloadData()
+            tcv.table.reloadData()
             updateLabels()
         }
         print(data.count)
@@ -301,7 +231,7 @@ guard let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPat
         } else {
             
             data.count -= 1
-            table.reloadData()
+            tcv.table.reloadData()
             print(data.count)
             updateLabels()
 
@@ -312,10 +242,10 @@ guard let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPat
     func updateLabels() {
       let data = TableData.shared
         
-        viewInstance.label.text = "\(String(self.sumMacro(cal: data.calorieArray))) kcal"
-        viewInstance.proteinLabelText.text = String(self.sumMacro(cal: TableData.shared.proteinArray))
-        viewInstance.carbLabelText.text = String(self.sumMacro(cal: data.carbohydrateArray))
-        viewInstance.fatLabelText.text = String(self.sumMacro(cal: data.fatArray))
+        tcv.label.text = "\(String(self.sumMacro(cal: data.calorieArray))) kcal"
+        tcv.proteinLabelText.text = String(self.sumMacro(cal: TableData.shared.proteinArray))
+        tcv.carbLabelText.text = String(self.sumMacro(cal: data.carbohydrateArray))
+        tcv.fatLabelText.text = String(self.sumMacro(cal: data.fatArray))
     }
  
     
@@ -336,5 +266,6 @@ guard let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPat
 }
 
  
+
 
 

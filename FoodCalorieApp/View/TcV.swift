@@ -12,7 +12,7 @@ import UIKit
 
 
 
-class  ViewRepresantation: UIView {
+class  TcV: UIView {
     
     
     
@@ -188,7 +188,7 @@ let dateLabel: UILabel = {
     view.translatesAutoresizingMaskIntoConstraints = false
     view.layer.cornerRadius = 50
     view.backgroundColor = .clear
-    view.text = ""
+    view.text = "Kuba"
     view.textAlignment = .center
     view.textColor = .white
     view.font = UIFont(name: "AvenirNextCondensed-Bold", size:20)
@@ -213,7 +213,17 @@ let arrowButton2: UIButton = {
     view.setImage(UIImage(named: "c"), for: .normal)
    
     return view
+    
 }()
+    let date: UILabel  = {
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .clear
+        label.text = "Kuba"
+        
+        return label
+    }()
     
     
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		45C1DDDD635AC386FFC23D10 /* Pods_FoodCalorieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D5C9C0E80D1C8576DD8FE5 /* Pods_FoodCalorieApp.framework */; };
+		C940294123154A7E00F030C7 /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940294023154A7E00F030C7 /* DateService.swift */; };
 		C945F43223030F47001CBABB /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = C945F43123030F47001CBABB /* Object.swift */; };
 		C948EFA122FAC61400179711 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C948EFA022FAC61400179711 /* TableViewCell.swift */; };
 		C948EFA322FAD7DE00179711 /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C948EFA222FAD7DE00179711 /* TableData.swift */; };
@@ -15,7 +16,7 @@
 		C94AFF882300671200C13B62 /* PostNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFF872300671200C13B62 /* PostNetworking.swift */; };
 		C94AFF8A2300778900C13B62 /* GetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFF892300778900C13B62 /* GetResponse.swift */; };
 		C94D6C092302BD40002691A0 /* ButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94D6C082302BD40002691A0 /* ButtonClass.swift */; };
-		C94D6C0B2302C3BF002691A0 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94D6C0A2302C3BF002691A0 /* View.swift */; };
+		C94D6C0B2302C3BF002691A0 /* TcV.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94D6C0A2302C3BF002691A0 /* TcV.swift */; };
 		C94D6C0D2302CED7002691A0 /* ViewForDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94D6C0C2302CED7002691A0 /* ViewForDetailViewController.swift */; };
 		C958E69922FC5B0C006388F9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958E69822FC5B0C006388F9 /* DetailViewController.swift */; };
 		C97301E522F864810071B8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97301E422F864810071B8E5 /* AppDelegate.swift */; };
@@ -23,7 +24,6 @@
 		C97301EC22F864820071B8E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97301EB22F864820071B8E5 /* Assets.xcassets */; };
 		C97301EF22F864820071B8E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97301ED22F864820071B8E5 /* LaunchScreen.storyboard */; };
 		C97301FB22F87C7F0071B8E5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97301FA22F87C7F0071B8E5 /* ResultViewController.swift */; };
-		C97301FD22F882D00071B8E5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97301FC22F882D00071B8E5 /* Extensions.swift */; };
 		C973020222F89E940071B8E5 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973020122F89E940071B8E5 /* Networking.swift */; };
 		C9F4D3C322F97EF000E094E5 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F4D3C222F97EF000E094E5 /* TableController.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +31,7 @@
 /* Begin PBXFileReference section */
 		1DD3AD2C4F6C80E94E359F53 /* Pods-FoodCalorieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCalorieApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodCalorieApp/Pods-FoodCalorieApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B51B2CE10DE94ED3209EB232 /* Pods-FoodCalorieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCalorieApp.release.xcconfig"; path = "Target Support Files/Pods-FoodCalorieApp/Pods-FoodCalorieApp.release.xcconfig"; sourceTree = "<group>"; };
+		C940294023154A7E00F030C7 /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		C945F43123030F47001CBABB /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		C948EFA022FAC61400179711 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		C948EFA222FAD7DE00179711 /* TableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableData.swift; sourceTree = "<group>"; };
@@ -38,7 +39,7 @@
 		C94AFF872300671200C13B62 /* PostNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNetworking.swift; sourceTree = "<group>"; };
 		C94AFF892300778900C13B62 /* GetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetResponse.swift; sourceTree = "<group>"; };
 		C94D6C082302BD40002691A0 /* ButtonClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonClass.swift; sourceTree = "<group>"; };
-		C94D6C0A2302C3BF002691A0 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		C94D6C0A2302C3BF002691A0 /* TcV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcV.swift; sourceTree = "<group>"; };
 		C94D6C0C2302CED7002691A0 /* ViewForDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForDetailViewController.swift; sourceTree = "<group>"; };
 		C958E69822FC5B0C006388F9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C97301E122F864810071B8E5 /* FoodCalorieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodCalorieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,7 +49,6 @@
 		C97301EE22F864820071B8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C97301F022F864820071B8E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C97301FA22F87C7F0071B8E5 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		C97301FC22F882D00071B8E5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C973020122F89E940071B8E5 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		C9F4D3C222F97EF000E094E5 /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		F6D5C9C0E80D1C8576DD8FE5 /* Pods_FoodCalorieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodCalorieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +83,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C940293F23154A6600F030C7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C940294023154A7E00F030C7 /* DateService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		C94D6BFE2302BB85002691A0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +105,7 @@
 		C94D6C052302BCA1002691A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C945F43123030F47001CBABB /* Object.swift */,
 				C948EFA222FAD7DE00179711 /* TableData.swift */,
 			);
 			path = Model;
@@ -123,32 +132,24 @@
 		C97301E322F864810071B8E5 /* FoodCalorieApp */ = {
 			isa = PBXGroup;
 			children = (
+				C940293F23154A6600F030C7 /* Service */,
 				C94D6C052302BCA1002691A0 /* Model */,
 				C94D6BFE2302BB85002691A0 /* Controller */,
 				C97301F722F865CB0071B8E5 /* View */,
-				C97301F622F865B30071B8E5 /* Global */,
 				C973020022F89E6A0071B8E5 /* Networking */,
-				C97301F922F867290071B8E5 /* Extensions */,
+				C97301F922F867290071B8E5 /* Helpers */,
 				C97301EB22F864820071B8E5 /* Assets.xcassets */,
 				C97301ED22F864820071B8E5 /* LaunchScreen.storyboard */,
+				C97301E422F864810071B8E5 /* AppDelegate.swift */,
 				C97301F022F864820071B8E5 /* Info.plist */,
 			);
 			path = FoodCalorieApp;
 			sourceTree = "<group>";
 		};
-		C97301F622F865B30071B8E5 /* Global */ = {
-			isa = PBXGroup;
-			children = (
-				C97301E422F864810071B8E5 /* AppDelegate.swift */,
-			);
-			path = Global;
-			sourceTree = "<group>";
-		};
 		C97301F722F865CB0071B8E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C94D6C082302BD40002691A0 /* ButtonClass.swift */,
-				C94D6C0A2302C3BF002691A0 /* View.swift */,
+				C94D6C0A2302C3BF002691A0 /* TcV.swift */,
 				C948EFA022FAC61400179711 /* TableViewCell.swift */,
 				C94AFF8523005EEE00C13B62 /* Cell.swift */,
 				C94D6C0C2302CED7002691A0 /* ViewForDetailViewController.swift */,
@@ -156,12 +157,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C97301F922F867290071B8E5 /* Extensions */ = {
+		C97301F922F867290071B8E5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				C97301FC22F882D00071B8E5 /* Extensions.swift */,
+				C94D6C082302BD40002691A0 /* ButtonClass.swift */,
 			);
-			path = Extensions;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		C973020022F89E6A0071B8E5 /* Networking */ = {
@@ -170,7 +171,6 @@
 				C973020122F89E940071B8E5 /* Networking.swift */,
 				C94AFF872300671200C13B62 /* PostNetworking.swift */,
 				C94AFF892300778900C13B62 /* GetResponse.swift */,
-				C945F43123030F47001CBABB /* Object.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -290,7 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C97301E722F864810071B8E5 /* StartViewController.swift in Sources */,
-				C94D6C0B2302C3BF002691A0 /* View.swift in Sources */,
+				C94D6C0B2302C3BF002691A0 /* TcV.swift in Sources */,
 				C97301E522F864810071B8E5 /* AppDelegate.swift in Sources */,
 				C948EFA122FAC61400179711 /* TableViewCell.swift in Sources */,
 				C94D6C092302BD40002691A0 /* ButtonClass.swift in Sources */,
@@ -304,7 +304,7 @@
 				C94AFF8623005EEE00C13B62 /* Cell.swift in Sources */,
 				C94D6C0D2302CED7002691A0 /* ViewForDetailViewController.swift in Sources */,
 				C9F4D3C322F97EF000E094E5 /* TableController.swift in Sources */,
-				C97301FD22F882D00071B8E5 /* Extensions.swift in Sources */,
+				C940294123154A7E00F030C7 /* DateService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

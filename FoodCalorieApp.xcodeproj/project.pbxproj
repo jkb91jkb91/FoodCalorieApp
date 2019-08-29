@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		45C1DDDD635AC386FFC23D10 /* Pods_FoodCalorieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D5C9C0E80D1C8576DD8FE5 /* Pods_FoodCalorieApp.framework */; };
-		C940294123154A7E00F030C7 /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940294023154A7E00F030C7 /* DateService.swift */; };
 		C945F43223030F47001CBABB /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = C945F43123030F47001CBABB /* Object.swift */; };
 		C948EFA122FAC61400179711 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C948EFA022FAC61400179711 /* TableViewCell.swift */; };
 		C948EFA322FAD7DE00179711 /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C948EFA222FAD7DE00179711 /* TableData.swift */; };
 		C94AFF8623005EEE00C13B62 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFF8523005EEE00C13B62 /* Cell.swift */; };
 		C94AFF882300671200C13B62 /* PostNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFF872300671200C13B62 /* PostNetworking.swift */; };
-		C94AFF8A2300778900C13B62 /* GetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFF892300778900C13B62 /* GetResponse.swift */; };
+		C94AFF8A2300778900C13B62 /* NetworkingGetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFF892300778900C13B62 /* NetworkingGetResponse.swift */; };
 		C94D6C092302BD40002691A0 /* ButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94D6C082302BD40002691A0 /* ButtonClass.swift */; };
 		C94D6C0B2302C3BF002691A0 /* TcV.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94D6C0A2302C3BF002691A0 /* TcV.swift */; };
 		C94D6C0D2302CED7002691A0 /* ViewForDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94D6C0C2302CED7002691A0 /* ViewForDetailViewController.swift */; };
@@ -25,19 +24,25 @@
 		C97301EF22F864820071B8E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97301ED22F864820071B8E5 /* LaunchScreen.storyboard */; };
 		C97301FB22F87C7F0071B8E5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97301FA22F87C7F0071B8E5 /* ResultViewController.swift */; };
 		C973020222F89E940071B8E5 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973020122F89E940071B8E5 /* Networking.swift */; };
+		C9743D402317D7AE007A93FE /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9743D3F2317D7AE007A93FE /* DateType.swift */; };
+		C9743D432317D82B007A93FE /* FoodCalorieApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9743D412317D82B007A93FE /* FoodCalorieApp.xcdatamodeld */; };
+		C9743D512317DBAF007A93FE /* Day+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9743D4D2317DBAF007A93FE /* Day+CoreDataClass.swift */; };
+		C9743D522317DBAF007A93FE /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9743D4E2317DBAF007A93FE /* Day+CoreDataProperties.swift */; };
+		C9743D532317DBAF007A93FE /* Meals+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9743D4F2317DBAF007A93FE /* Meals+CoreDataClass.swift */; };
+		C9743D542317DBAF007A93FE /* Meals+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9743D502317DBAF007A93FE /* Meals+CoreDataProperties.swift */; };
+		C9743D5623181DE5007A93FE /* MacroDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9743D5523181DE5007A93FE /* MacroDataType.swift */; };
 		C9F4D3C322F97EF000E094E5 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F4D3C222F97EF000E094E5 /* TableController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1DD3AD2C4F6C80E94E359F53 /* Pods-FoodCalorieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCalorieApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodCalorieApp/Pods-FoodCalorieApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B51B2CE10DE94ED3209EB232 /* Pods-FoodCalorieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodCalorieApp.release.xcconfig"; path = "Target Support Files/Pods-FoodCalorieApp/Pods-FoodCalorieApp.release.xcconfig"; sourceTree = "<group>"; };
-		C940294023154A7E00F030C7 /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		C945F43123030F47001CBABB /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		C948EFA022FAC61400179711 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		C948EFA222FAD7DE00179711 /* TableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableData.swift; sourceTree = "<group>"; };
 		C94AFF8523005EEE00C13B62 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		C94AFF872300671200C13B62 /* PostNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNetworking.swift; sourceTree = "<group>"; };
-		C94AFF892300778900C13B62 /* GetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetResponse.swift; sourceTree = "<group>"; };
+		C94AFF892300778900C13B62 /* NetworkingGetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingGetResponse.swift; sourceTree = "<group>"; };
 		C94D6C082302BD40002691A0 /* ButtonClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonClass.swift; sourceTree = "<group>"; };
 		C94D6C0A2302C3BF002691A0 /* TcV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcV.swift; sourceTree = "<group>"; };
 		C94D6C0C2302CED7002691A0 /* ViewForDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForDetailViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +55,13 @@
 		C97301F022F864820071B8E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C97301FA22F87C7F0071B8E5 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		C973020122F89E940071B8E5 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		C9743D3F2317D7AE007A93FE /* DateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateType.swift; sourceTree = "<group>"; };
+		C9743D422317D82B007A93FE /* Day.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Day.xcdatamodel; sourceTree = "<group>"; };
+		C9743D4D2317DBAF007A93FE /* Day+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C9743D4E2317DBAF007A93FE /* Day+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C9743D4F2317DBAF007A93FE /* Meals+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meals+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C9743D502317DBAF007A93FE /* Meals+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meals+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C9743D5523181DE5007A93FE /* MacroDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroDataType.swift; sourceTree = "<group>"; };
 		C9F4D3C222F97EF000E094E5 /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		F6D5C9C0E80D1C8576DD8FE5 /* Pods_FoodCalorieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodCalorieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -86,7 +98,6 @@
 		C940293F23154A6600F030C7 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				C940294023154A7E00F030C7 /* DateService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -116,6 +127,7 @@
 			children = (
 				C97301E322F864810071B8E5 /* FoodCalorieApp */,
 				C97301E222F864810071B8E5 /* Products */,
+				C9743D412317D82B007A93FE /* FoodCalorieApp.xcdatamodeld */,
 				6A63580CB1FBFC7584115354 /* Pods */,
 				813327987C7C9773B6B471F3 /* Frameworks */,
 			);
@@ -132,6 +144,8 @@
 		C97301E322F864810071B8E5 /* FoodCalorieApp */ = {
 			isa = PBXGroup;
 			children = (
+				C9743D442317D9BE007A93FE /* CoreData */,
+				C9743D3E2317D79E007A93FE /* Enums */,
 				C940293F23154A6600F030C7 /* Service */,
 				C94D6C052302BCA1002691A0 /* Model */,
 				C94D6BFE2302BB85002691A0 /* Controller */,
@@ -170,9 +184,29 @@
 			children = (
 				C973020122F89E940071B8E5 /* Networking.swift */,
 				C94AFF872300671200C13B62 /* PostNetworking.swift */,
-				C94AFF892300778900C13B62 /* GetResponse.swift */,
+				C94AFF892300778900C13B62 /* NetworkingGetResponse.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		C9743D3E2317D79E007A93FE /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				C9743D3F2317D7AE007A93FE /* DateType.swift */,
+				C9743D5523181DE5007A93FE /* MacroDataType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		C9743D442317D9BE007A93FE /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C9743D4D2317DBAF007A93FE /* Day+CoreDataClass.swift */,
+				C9743D4E2317DBAF007A93FE /* Day+CoreDataProperties.swift */,
+				C9743D4F2317DBAF007A93FE /* Meals+CoreDataClass.swift */,
+				C9743D502317DBAF007A93FE /* Meals+CoreDataProperties.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,21 +324,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				C97301E722F864810071B8E5 /* StartViewController.swift in Sources */,
+				C9743D402317D7AE007A93FE /* DateType.swift in Sources */,
 				C94D6C0B2302C3BF002691A0 /* TcV.swift in Sources */,
+				C9743D532317DBAF007A93FE /* Meals+CoreDataClass.swift in Sources */,
+				C9743D5623181DE5007A93FE /* MacroDataType.swift in Sources */,
 				C97301E522F864810071B8E5 /* AppDelegate.swift in Sources */,
+				C9743D512317DBAF007A93FE /* Day+CoreDataClass.swift in Sources */,
 				C948EFA122FAC61400179711 /* TableViewCell.swift in Sources */,
 				C94D6C092302BD40002691A0 /* ButtonClass.swift in Sources */,
 				C94AFF882300671200C13B62 /* PostNetworking.swift in Sources */,
+				C9743D522317DBAF007A93FE /* Day+CoreDataProperties.swift in Sources */,
 				C948EFA322FAD7DE00179711 /* TableData.swift in Sources */,
 				C945F43223030F47001CBABB /* Object.swift in Sources */,
 				C973020222F89E940071B8E5 /* Networking.swift in Sources */,
-				C94AFF8A2300778900C13B62 /* GetResponse.swift in Sources */,
+				C9743D432317D82B007A93FE /* FoodCalorieApp.xcdatamodeld in Sources */,
+				C94AFF8A2300778900C13B62 /* NetworkingGetResponse.swift in Sources */,
 				C97301FB22F87C7F0071B8E5 /* ResultViewController.swift in Sources */,
+				C9743D542317DBAF007A93FE /* Meals+CoreDataProperties.swift in Sources */,
 				C958E69922FC5B0C006388F9 /* DetailViewController.swift in Sources */,
 				C94AFF8623005EEE00C13B62 /* Cell.swift in Sources */,
 				C94D6C0D2302CED7002691A0 /* ViewForDetailViewController.swift in Sources */,
 				C9F4D3C322F97EF000E094E5 /* TableController.swift in Sources */,
-				C940294123154A7E00F030C7 /* DateService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +536,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C9743D412317D82B007A93FE /* FoodCalorieApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C9743D422317D82B007A93FE /* Day.xcdatamodel */,
+			);
+			currentVersion = C9743D422317D82B007A93FE /* Day.xcdatamodel */;
+			path = FoodCalorieApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C97301D922F864810071B8E5 /* Project object */;
 }

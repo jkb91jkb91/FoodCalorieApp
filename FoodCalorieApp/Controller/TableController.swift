@@ -8,6 +8,8 @@
 
 import UIKit
 import ObjectiveC
+import CoreData
+
 
 
 
@@ -16,7 +18,10 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
   
     
     var tcv : TcV!
- 
+    
+    var currentState : Day?
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     
     
     override func viewDidLoad() {
@@ -30,31 +35,50 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
         tcv.button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
         tcv.arrowButton1.addTarget(self, action: #selector(rightArrowAction), for: .touchUpInside)
         tcv.arrowButton2.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
-    
+        
       
         
-        TableData.shared.productArray.append([String]())
-        TableData.shared.proteinArray.append([Int]())
-       TableData.shared.carbohydrateArray.append([Int]())
-       TableData.shared.fatArray.append([Int]())
-       TableData.shared.calorieArray.append([Int]())
+        let date = takeDate(type: .normal, dateString: nil)
+        print(date)
         
-  
         
+        let fetch :NSFetchRequest<Day> = Day.fetchRequest()
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Day.wartosc),date)
+        
+        do {
+            
+            let result = try context.fetch(fetch)
+            if result.count > 0 {
+                currentState = result.first
+                tcv.dateLabel.text = currentState?.wartosc
+ 
+            } else {
+                
+                let dzien = Day(context: context)
+                dzien.wartosc = date
+                currentState = dzien
+                try context.save()
+                
+                tcv.dateLabel.text = date
+                print("niewie")
+                
+            }
+            
+        }catch let error as NSError {
+            print ( "\(error)")
+            
+            
+        }
+        
+        updateLabels()
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let data = TableData.shared
+        tcv.table.reloadData()
+        updateLabels()
         
-        if data.productArray.count >= 0 {
-            tcv.table.reloadData()
-            
-           updateLabels()
-        
-           
-        
-        }
     }
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -62,25 +86,30 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let gdata = TableData.shared
-        return gdata.productArray[gdata.count].count
+        
+        guard let meals = currentState?.meals else {
+            return 0
+        }
+        return meals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let data = TableData.shared
-guard let cell = tcv.table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
+      
+        guard let cell = tcv.table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
             return UITableViewCell() }
-        if data.productArray[data.count].isEmpty == false   {
-         cell.Namelabel.text = TableData.shared.productArray[data.count][(indexPath.row)] }
-        if data.calorieArray[data.count].isEmpty == false  {
-            cell.calorielabel.text = String(data.calorieArray[data.count][indexPath.row]) }
-        if data.proteinArray[data.count].isEmpty == false {
-            cell.proteinLabelText.text = String(data.proteinArray[data.count][indexPath.row]) }
-        if data.carbohydrateArray[data.count].isEmpty == false {
-            cell.carbLabelText.text = String(data.carbohydrateArray[data.count][indexPath.row]) }
-        if data.fatArray[data.count].count > 0 {
-            cell.fatLabelText.text = String(data.fatArray[data.count][indexPath.row]) }
+        
+        guard let meals = currentState?.meals?[indexPath.row] as? Meals
+            else {
+            return cell
+            }
+  
+            cell.Namelabel.text = meals.productField ?? ""
+            cell.calorielabel.text = String(meals.calorieField) ?? ""
+            cell.proteinLabelText.text = String(meals.proteinField) ?? ""
+            cell.carbLabelText.text = String(meals.carbField) ?? ""
+            cell.fatLabelText.text = String(meals.fatField) ?? ""
+        
         return cell
     }
     
@@ -101,6 +130,8 @@ guard let cell = tcv.table.dequeueReusableCell(withIdentifier: "cell", for: inde
     }
 
     func addConstraints() {
+        
+        tcv = TcV()
         
         let tableView = tcv.table
         let bottomView = tcv.bottomView
@@ -169,29 +200,61 @@ guard let cell = tcv.table.dequeueReusableCell(withIdentifier: "cell", for: inde
         stack3.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-
-    func setDate() {
-        
-  
-        
-        
-        
-        
-    }
-        
-        
+    func takeDate(type: DateType, dateString: String?) -> String {
     
-    @objc func performAction() {
-        present(ResultViewController(), animated: false, completion:nil)
-        
+    switch type {
+    
+    case .normal:
+    
+    let today = Date()
+    let calendar = Calendar.current
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .short
+    let dateFromString = dateFormatter.string(from: today)
+    return dateFromString
+    
+    
+    case .forward:
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .short
+    let dateFromString = dateFormatter.date(from: dateString!)
+    let calendar = Calendar.current
+    let modifiedDate = calendar.date(byAdding: .day, value: 1, to: dateFromString!)
+    dateFormatter.dateStyle = .short
+    let stringFormat = dateFormatter.string(from: modifiedDate!)
+    return stringFormat
+    
+    case .back:
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .short
+    let dateFromString = dateFormatter.date(from: dateString!)
+    print(dateFromString)
+    let calendar = Calendar.current
+    let modifiedDate = calendar.date(byAdding: .day, value: -1, to: dateFromString!)
+    print(modifiedDate)
+    dateFormatter.dateStyle = .short
+    let stringFormat = dateFormatter.string(from: modifiedDate!)
+    print(stringFormat)
+    return stringFormat
+    
+    
+        }
     }
+
     
     @objc func showAlert() {
         let alert = UIAlertController(title: "Choose Method", message: nil, preferredStyle: .alert)
         let action = UIAlertAction(title: "Custom Meal", style: .default) { (_) in
-            self.present(DetailViewController(), animated: true, completion: nil)}
+            let detailVC = DetailViewController()
+            detailVC.current = self.currentState
+            self.present(detailVC, animated: true, completion: nil)}
         let action2 = UIAlertAction(title: "Use DataBase", style: .default) { (_) in
-            self.present(ResultViewController(), animated: true, completion: nil)
+            let resultVC = ResultViewController()
+            resultVC.current = self.currentState
+            self.present(resultVC, animated: true, completion: nil)
         }
         alert.addAction(action)
         alert.addAction(action2)
@@ -202,70 +265,135 @@ guard let cell = tcv.table.dequeueReusableCell(withIdentifier: "cell", for: inde
     @objc func rightArrowAction() {
         
         
-        let data = TableData.shared
-        data.count += 1
-        print(data.count)
-        if data.count > (data.productArray.count) - 1 {
-            data.productArray.append([String]())
-            data.proteinArray.append([Int]())
-            data.carbohydrateArray.append([Int]())
-            data.fatArray.append([Int]())
-            data.calorieArray.append([Int]())
-            tcv.table.reloadData()
+        
+        
+        let current = currentState!.wartosc
+        print("pobrana wartosc\(current)")
+        print("forward1\(current)")
+        let plusOneDay = takeDate(type: .forward, dateString: current)
+        print("plusOneDay = \(plusOneDay)")
+        let fetch :NSFetchRequest<Day> = Day.fetchRequest()
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Day.wartosc), plusOneDay)
+        
+        do {
             
-        }
-        if data.count > 0 {
-            tcv.table.reloadData()
-            updateLabels()
-        }
-        print(data.count)
+            let result = try context.fetch(fetch)
+            if result.count > 0 {
+                currentState = result.first
+                tcv.dateLabel.text = currentState?.wartosc
+                print("miejstuTU")
+            } else {
+                
+                let dzien = Day(context: context)
+                dzien.wartosc = plusOneDay
+                try context.save()
+                self.currentState = dzien
+                tcv.dateLabel.text = currentState?.wartosc
+                print("DrugieMiejsc")
+                
+            }
+            
+        }catch let error as NSError {
+            print ( "\(error)")
+            }
+        updateLabels()
+        tcv.table.reloadData()
+
     }
     
     @objc func leftAction() {
         
+        let current = currentState!.wartosc
+        let backOneDay = takeDate(type: .back, dateString: current)
+        print("plusOneDay = \(backOneDay)")
+        let fetch :NSFetchRequest<Day> = Day.fetchRequest()
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Day.wartosc), backOneDay)
         
-        let data = TableData.shared
-        if data.count == 0 {
-            return
-        
-        } else {
+        do {
             
-            data.count -= 1
-            tcv.table.reloadData()
-            print(data.count)
-            updateLabels()
-
+            let result = try context.fetch(fetch)
+            if result.count > 0 {
+                currentState = result.first
+                tcv.dateLabel.text = currentState?.wartosc
+            } else {
+                
+                let dzien = Day(context: context)
+                dzien.wartosc = backOneDay
+                try context.save()
+                currentState = dzien
+                tcv.dateLabel.text = currentState?.wartosc
+                
+            }
+            
+        }catch let error as NSError {
+            print ( "\(error)")
+            
             
         }
+        updateLabels()
+        tcv.table.reloadData()
+    
     }
     
     func updateLabels() {
-      let data = TableData.shared
-        
-        tcv.label.text = "\(String(self.sumMacro(cal: data.calorieArray))) kcal"
-        tcv.proteinLabelText.text = String(self.sumMacro(cal: TableData.shared.proteinArray))
-        tcv.carbLabelText.text = String(self.sumMacro(cal: data.carbohydrateArray))
-        tcv.fatLabelText.text = String(self.sumMacro(cal: data.fatArray))
+
+        tcv.label.text = "\(String(self.sumMacro(macro: MacroDataType.calorieField))) kcal"
+        print(self.sumMacro(macro: MacroDataType.calorieField))
+        tcv.proteinLabelText.text = String(self.sumMacro(macro: MacroDataType.proteinField))
+        tcv.carbLabelText.text = String(self.sumMacro(macro: MacroDataType.carbField))
+        tcv.fatLabelText.text = String(self.sumMacro(macro: MacroDataType.fatField))
+     
     }
  
-    
-    
-    
-    func sumMacro(cal: [[Int]]) ->Int {
-           let data = TableData.shared
+    func sumMacro(macro: MacroDataType) ->Int16 {
         
-        var calSum = 0
-        for item in cal[data.count] {
-            calSum += item
+        switch macro {
+            
+        case.calorieField:
+            
+            var calSum: Int16 = 0
+            let count = currentState!.meals!.count
+            for i in 0..<count {
+                if let meals = currentState?.meals![i] as? Meals {
+                    calSum += meals.calorieField
+                }
+             }
+            return calSum
+            
+        case.proteinField:
+            var calSum: Int16 = 0
+            let count = currentState!.meals!.count
+            for i in 0..<count {
+            if let meals = currentState?.meals![i] as? Meals {
+                    calSum += meals.proteinField
+                }
+            }
+            return calSum
+            
+            case.carbField:
+            var calSum: Int16 = 0
+            let count = currentState!.meals!.count
+            for i in 0..<count {
+                if let meals = currentState?.meals![i] as? Meals {
+                    calSum += meals.carbField
+                }
+            }
+            return calSum
+            
+        case.fatField:
+            var calSum: Int16 = 0
+            let count = currentState!.meals!.count
+            for i in 0..<count {
+                if let meals = currentState?.meals![i] as? Meals {
+                    calSum += meals.fatField
+                }
+            }
+            return calSum
         }
-        return calSum
-        
         
     }
-    
-}
 
  
-
+}
 
 

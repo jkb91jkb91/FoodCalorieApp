@@ -14,8 +14,9 @@ class ResultViewController: UINavigationController, UICollectionViewDelegateFlow
     
     
     var post = [Food]()
+    var current: Day!
     
-    
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -33,42 +34,25 @@ class ResultViewController: UINavigationController, UICollectionViewDelegateFlow
         
         
         
-        let data = TableData.shared
         
+        let meal = Meals(context: context)
+        meal.productField = post[indexPath.row].label
+        meal.calorieField = Int16(post[indexPath.row].nutrients.ENERC_KCAL!)
+        meal.proteinField = Int16(post[indexPath.row].nutrients.PROCNT!)
+        meal.carbField = Int16(post[indexPath.row].nutrients.CHOCDF!)
+        meal.fatField = Int16(post[indexPath.row].nutrients.FAT!)
         
-        if post[indexPath.row].label != nil  {
-            data.productArray[data.count].append(post[indexPath.row].label)
-        } else {
-            data.productArray[data.count].append("")
+        if let meals = current.meals?.mutableCopy() as? NSMutableOrderedSet {
+            meals.add(meal)
+            current.meals = meals
         }
-       
-        
-        if post[indexPath.row].nutrients.ENERC_KCAL != nil  {
-            data.calorieArray[data.count].append(Int(post[indexPath.row].nutrients.ENERC_KCAL!))
-        } else {
-            data.calorieArray[data.count].append(0)
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("\(error)")
         }
-        
-        if post[indexPath.row].nutrients.PROCNT != nil  {
-            data.proteinArray[data.count].append(Int(post[indexPath.row].nutrients.PROCNT!))
-        } else {
-            data.proteinArray[data.count].append(0)
-        }
-        
-        if post[indexPath.row].nutrients.CHOCDF != nil  {
-            data.carbohydrateArray[data.count].append(Int(post[indexPath.row].nutrients.CHOCDF!))
-        } else {
-            data.carbohydrateArray[data.count].append(0)
-        }
-        
-        if post[indexPath.row].nutrients.FAT != nil  {
-            data.fatArray[data.count].append(Int(post[indexPath.row].nutrients.FAT!))
-        } else {
-            data.fatArray[data.count].append(0)
-        }
-        
         dismiss(animated: true , completion: nil)
-        
+       
         
     }
     

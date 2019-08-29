@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Day" representedClassName=".Day" syncable="YES">
+        <attribute name="wartosc" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="meals" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Meals" inverseName="dzien" inverseEntity="Meals" syncable="YES"/>
+    </entity>
+    <entity name="Meals" representedClassName=".Meals" syncable="YES">
+        <attribute name="calorieField" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="carbField" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fatField" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="productField" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="proteinField" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="dzien" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="meals" inverseEntity="Day" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Day" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Meals" positionX="-54" positionY="0" width="128" height="135"/>
+    </elements>
+</model>

@@ -9,13 +9,22 @@
 import UIKit
 
 class DetailViewController: UIViewController, UITextFieldDelegate {
+   
+    
     
 
      var detailInstance = ViewForDetailViewController()
+    var current: Day!
+
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+     
+        print(current.meals?.count)
+       
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         addConstraints()
@@ -23,6 +32,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         detailInstance.calorieField.delegate = self
         detailInstance.saveBtn.addTarget(self, action: #selector(Save), for: .touchUpInside)
         detailInstance.backBtn.addTarget(self, action: #selector(back), for: .touchUpInside)
+    }
+    
+    func takeDay(current: Day) {
+    
+        self.current = current
+        print("This is \(self.current.meals?.count)")
+        
     }
     
     
@@ -94,10 +110,29 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     @objc func Save() {
         
-        var data = TableData.shared
         
         
         
+        let meal = Meals(context: context)
+        meal.productField = detailInstance.productField.text
+        meal.calorieField = Int16(detailInstance.calorieField.text!) ?? 0
+        meal.proteinField = Int16(detailInstance.proteinField.text!) ?? 0
+        meal.carbField = Int16(detailInstance.carbField.text!) ?? 0
+        meal.fatField = Int16(detailInstance.fatField.text!) ?? 0
+    
+        if let meals = current.meals?.mutableCopy() as? NSMutableOrderedSet {
+            meals.add(meal)
+            current.meals = meals
+        }
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("\(error)")
+        }
+        dismiss(animated: true , completion: nil)
+    
+        
+        /*
         
         if detailInstance.productField.text != "" {
             data.productArray[data.count].append(detailInstance.productField.text!)
@@ -125,10 +160,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         } else {
             data.fatArray[data.count].append(0)
         }
+        */
         
-        
-        dismiss(animated: true , completion: nil)
-        
+      
       
         
         

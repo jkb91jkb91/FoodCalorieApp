@@ -16,8 +16,6 @@ import Foundation
         case proteinField
         case carbField
         case fatField
-        
-        
-        
+
     }
 

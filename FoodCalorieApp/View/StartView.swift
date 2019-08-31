@@ -8,7 +8,7 @@
 
 import UIKit
 
-class View: UIView {
+class StartView: UIView {
 
         
         let button: UILabel = {

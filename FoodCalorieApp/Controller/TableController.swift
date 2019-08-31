@@ -17,7 +17,7 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
   
     
-    var tcv : TcV!
+    var tcv : TableViews!
     
     var currentState : Day?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -61,17 +61,13 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
                 
                 tcv.dateLabel.text = date
                 print("niewie")
-                
             }
             
         }catch let error as NSError {
             print ( "\(error)")
-            
-            
         }
         
         updateLabels()
-      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,35 +99,46 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
             else {
             return cell
             }
-  
-            cell.Namelabel.text = meals.productField ?? ""
-            cell.calorielabel.text = String(meals.calorieField) ?? ""
-            cell.proteinLabelText.text = String(meals.proteinField) ?? ""
-            cell.carbLabelText.text = String(meals.carbField) ?? ""
-            cell.fatLabelText.text = String(meals.fatField) ?? ""
+    
+        cell.updateCell(meal: meals)
         
+        
+        
+        
+        
+        
+  /*
+            cell.nameLabel.text = meals.productField
+            cell.calorielabel.text = String(meals.calorieField)
+            cell.proteinLabelText.text = String(meals.proteinField)
+            cell.carbLabelText.text = String(meals.carbField)
+            cell.fatLabelText.text = String(meals.fatField) 
+        */
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            let count = TableData.shared.count
+            guard let toRemove = currentState?.meals![indexPath.row] as? Meals else {
+                return
+            }
             
-            TableData.shared.productArray[count].remove(at: indexPath.row)
-            TableData.shared.proteinArray[count].remove(at: indexPath.row)
-            TableData.shared.carbohydrateArray[count].remove(at: indexPath.row)
-            TableData.shared.fatArray[count].remove(at: indexPath.row)
-            TableData.shared.calorieArray[count].remove(at: indexPath.row)
-            tableView.reloadData()
-            updateLabels()
+            context.delete(toRemove)
             
+            do {
+                
+                try context.save()
+                tcv.table.deleteRows(at: [indexPath], with: .automatic)
+            } catch let error as NSError {
+                print("\(error)")
+            }
         }
     }
 
     func addConstraints() {
         
-        tcv = TcV()
+        tcv = TableViews()
         
         let tableView = tcv.table
         let bottomView = tcv.bottomView
@@ -231,10 +238,10 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
     let dateFormatter = DateFormatter()
     dateFormatter.dateStyle = .short
     let dateFromString = dateFormatter.date(from: dateString!)
-    print(dateFromString)
+ 
     let calendar = Calendar.current
     let modifiedDate = calendar.date(byAdding: .day, value: -1, to: dateFromString!)
-    print(modifiedDate)
+
     dateFormatter.dateStyle = .short
     let stringFormat = dateFormatter.string(from: modifiedDate!)
     print(stringFormat)
@@ -264,19 +271,14 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     @objc func rightArrowAction() {
         
-        
-        
-        
         let current = currentState!.wartosc
-        print("pobrana wartosc\(current)")
-        print("forward1\(current)")
+  
         let plusOneDay = takeDate(type: .forward, dateString: current)
         print("plusOneDay = \(plusOneDay)")
         let fetch :NSFetchRequest<Day> = Day.fetchRequest()
         fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Day.wartosc), plusOneDay)
         
         do {
-            
             let result = try context.fetch(fetch)
             if result.count > 0 {
                 currentState = result.first
@@ -322,17 +324,14 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
                 try context.save()
                 currentState = dzien
                 tcv.dateLabel.text = currentState?.wartosc
-                
             }
             
         }catch let error as NSError {
             print ( "\(error)")
             
-            
-        }
+    }
         updateLabels()
         tcv.table.reloadData()
-    
     }
     
     func updateLabels() {
@@ -392,8 +391,6 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
         }
         
     }
-
- 
 }
 
 

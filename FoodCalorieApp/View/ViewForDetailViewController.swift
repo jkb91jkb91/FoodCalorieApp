@@ -68,8 +68,6 @@ let saveBtn: UIButton = {
     view.layer.shadowOffset = CGSize(width: 0, height: 0)
     view.layer.shadowOpacity = 0.5
     
-    
-    
     return view
 }()
 
@@ -78,18 +76,7 @@ let backBtn: UIButton = {
     view.translatesAutoresizingMaskIntoConstraints = false
     view.setImage(UIImage(named: "BACK"), for: .normal)
     
-    
-    
     return view
 }()
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

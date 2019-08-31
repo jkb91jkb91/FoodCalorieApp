@@ -32,22 +32,15 @@ struct Nutrient: Decodable {
         case PROCNT = "PROCNT"
         case FAT = "FAT"
         case CHOCDF = "CHOCDF"
-      
-        
-        
-        
-        
+   
     }
-    
-    
-    
-    
+  
 }
 
 
 struct Food: Decodable {
     
-    var label: String
+    var label: String?
     var nutrients: Nutrient
     init(label:String, nutrients: Nutrient) {
         self.label = label
@@ -90,6 +83,5 @@ struct Object: Decodable {
         case hints = "hints"
         case text = "text"
         
-        
-}
+        }
 }

@@ -11,7 +11,7 @@ import SnapKit
 
 class StartViewController: UIViewController {
     
-    let viewInstance = View()
+    let viewInstance = StartView()
     var counter = 1
 
     override func viewDidLoad() {
@@ -20,8 +20,6 @@ class StartViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: false)
-        
-     
     }
     func getToVc() {
         present(TableController(), animated: true, completion:  nil)
@@ -40,7 +38,6 @@ class StartViewController: UIViewController {
         
         let buttonFromVIew = viewInstance.button
         view.addSubview(buttonFromVIew)
-        
         
         buttonFromVIew.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(250)

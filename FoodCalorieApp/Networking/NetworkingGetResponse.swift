@@ -22,20 +22,8 @@ struct GetResponse {
             print(i)
             food.append(i.food)
         }
-        
-        
-        
-      
-        
-    
-        
-    
-          
-        
-        self.posts = food
-    
-    
-    
 
-}
+        self.posts = food
+        
+    }
 }

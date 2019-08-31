@@ -25,7 +25,7 @@ class TableViewCell: UITableViewCell {
     func addConstraints() {
         
         addSubview(mainView)
-        mainView.addSubview(Namelabel)
+        mainView.addSubview(nameLabel)
         mainView.addSubview(iView)
         mainView.addSubview(proteinlabel)
         mainView.addSubview(carblabel)
@@ -52,7 +52,7 @@ class TableViewCell: UITableViewCell {
         }
     
         
-        Namelabel.snp.makeConstraints { (make) in
+        nameLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(1)
             make.leading.equalTo(iView.snp.trailing).offset(10)
             make.trailing.equalToSuperview().offset(10)
@@ -68,28 +68,28 @@ class TableViewCell: UITableViewCell {
      
         
         proteinlabel.snp.makeConstraints { (make) in
-            make.top.equalTo(Namelabel.snp.bottom)
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
             make.leading.equalTo(iView.snp.trailing).offset(10)
             make.width.equalTo(70)
             make.height.equalTo(20)
         }
        
         carblabel.snp.makeConstraints { (make) in
-            make.top.equalTo(Namelabel.snp.bottom)
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
             make.leading.equalTo(proteinlabel.snp.trailing).offset(5)
             make.width.equalTo(70)
             make.height.equalTo(20)
         }
      
         fatlabel.snp.makeConstraints { (make) in
-            make.top.equalTo(Namelabel.snp.bottom)
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
             make.leading.equalTo(carblabel.snp.trailing).offset(5)
             make.width.equalTo(70)
             make.height.equalTo(20)
         }
        
         proteinLabelText.snp.makeConstraints { (make) in
-            make.top.equalTo(Namelabel.snp.bottom).offset(20)
+            make.bottom.equalToSuperview().offset(-10)
             make.leading.equalTo(iView.snp.trailing).offset(5)
             make.width.equalTo(70)
             make.height.equalTo(20)
@@ -97,14 +97,14 @@ class TableViewCell: UITableViewCell {
         
         
         carbLabelText.snp.makeConstraints { (make) in
-            make.top.equalTo(Namelabel.snp.bottom).offset(20)
+            make.bottom.equalToSuperview().offset(-10)
             make.leading.equalTo(proteinlabel.snp.trailing).offset(5)
             make.width.equalTo(70)
             make.height.equalTo(20)
         }
        
         fatLabelText.snp.makeConstraints { (make) in
-            make.top.equalTo(Namelabel.snp.bottom).offset(20)
+            make.bottom.equalToSuperview().offset(-10)
             make.leading.equalTo(carblabel.snp.trailing).offset(5)
             make.width.equalTo(70)
             make.height.equalTo(20)
@@ -129,7 +129,7 @@ class TableViewCell: UITableViewCell {
         return view
         }()
     
-    let Namelabel: UILabel = {
+    let nameLabel: UILabel = {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.white.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -214,6 +214,20 @@ class TableViewCell: UITableViewCell {
         view.textAlignment = .center
         return view
     }()
+    
+    
+    func updateCell(meal: Meals) {
+        
+        
+        
+        
+        nameLabel.text = meal.productField?.uppercased()
+        calorielabel.text = String(meal.calorieField).uppercased()
+        proteinLabelText.text = String(meal.proteinField).uppercased()
+        carbLabelText.text = String(meal.carbField).uppercased()
+        fatLabelText.text = String(meal.fatField).uppercased()
+        
+    }
     
 }
 

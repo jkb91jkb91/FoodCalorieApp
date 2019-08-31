@@ -12,9 +12,7 @@ import UIKit
 
 
 
-class  TcV: UIView {
-    
-    
+class  TableViews: UIView {
     
     
     func createStackView(view1: UIView, view2: UIView, view3: UIView) -> UIStackView {

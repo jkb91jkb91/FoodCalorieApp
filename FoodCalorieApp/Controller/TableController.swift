@@ -15,26 +15,41 @@ import CoreData
 
 class TableController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
+    unowned var tableViews: TableViews { return self.view as! TableViews}
+    unowned var table: UITableView { return tableViews.table}
+    unowned var button: UIButton { return tableViews.button}
+    unowned var arrowButton1 : UIButton { return tableViews.arrowButton1}
+    unowned var arrowButton2 : UIButton { return tableViews.arrowButton2}
+    unowned var dateLabel: UILabel {return tableViews.dateLabel}
+    unowned var label: UILabel { return tableViews.label}
+    unowned var proteinLabelText : UILabel { return tableViews.proteinLabelText}
+    unowned var carbLabelText: UILabel { return tableViews.carbLabelText}
+    unowned var fatLabelText: UILabel { return tableViews.fatLabelText}
+    
   
     
-    var tcv : TableViews!
+ 
     
     var currentState : Day?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     
+    override func loadView() {
+        self.view = TableViews()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addConstraints()
-        tcv.table.register(TableViewCell.self, forCellReuseIdentifier: "cell")
-        tcv.table.dataSource = self
-        tcv.table.delegate = self
+ 
+        table.register(TableViewCell.self, forCellReuseIdentifier: "cell")
+        table.dataSource = self
+        table.delegate = self
         
-        tcv.button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-        tcv.arrowButton1.addTarget(self, action: #selector(rightArrowAction), for: .touchUpInside)
-        tcv.arrowButton2.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
+        arrowButton1.addTarget(self, action: #selector(rightArrowAction), for: .touchUpInside)
+        arrowButton2.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
         
       
         
@@ -50,7 +65,7 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
             let result = try context.fetch(fetch)
             if result.count > 0 {
                 currentState = result.first
-                tcv.dateLabel.text = currentState?.wartosc
+                dateLabel.text = currentState?.wartosc
  
             } else {
                 
@@ -59,7 +74,7 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
                 currentState = dzien
                 try context.save()
                 
-                tcv.dateLabel.text = date
+                dateLabel.text = date
                 print("niewie")
             }
             
@@ -72,7 +87,7 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         
-        tcv.table.reloadData()
+        table.reloadData()
         updateLabels()
         
     }
@@ -92,7 +107,7 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
       
-        guard let cell = tcv.table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
+        guard let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
             return UITableViewCell() }
         
         guard let meals = currentState?.meals?[indexPath.row] as? Meals
@@ -101,12 +116,7 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
             }
     
         cell.updateCell(meal: meals)
-        
-        
-        
-        
-        
-        
+
   /*
             cell.nameLabel.text = meals.productField
             cell.calorielabel.text = String(meals.calorieField)
@@ -129,83 +139,13 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
             do {
                 
                 try context.save()
-                tcv.table.deleteRows(at: [indexPath], with: .automatic)
+                table.deleteRows(at: [indexPath], with: .automatic)
             } catch let error as NSError {
                 print("\(error)")
             }
         }
     }
 
-    func addConstraints() {
-        
-        tcv = TableViews()
-        
-        let tableView = tcv.table
-        let bottomView = tcv.bottomView
-        let button = tcv.button
-        let topView = tcv.topView
-        let label = tcv.label
-        let proteinlabel = tcv.proteinlabel
-        let carblabel = tcv.carblabel
-        let fatlabel = tcv.fatlabel
-        let stack = tcv.createStackView(view1: proteinlabel, view2: carblabel, view3: fatlabel)
-        let arrowButton1 = tcv.arrowButton1
-        let arrowButton2 = tcv.arrowButton2
-        let dateLbl = tcv.dateLabel
-        let stack3 = tcv.createStackView(view1: arrowButton2, view2: dateLbl, view3: arrowButton1)
-        let proteinLabelText = tcv.proteinLabelText
-        let carbLabelText = tcv.carbLabelText
-        let fatLabelText = tcv.fatLabelText
-        let stack2 = tcv.createStackView(view1: proteinLabelText, view2: carbLabelText, view3: fatLabelText)
-        view.addSubview(tableView)
-        view.addSubview(bottomView)
-        view.addSubview(button)
-        view.addSubview(topView)
-        view.addSubview(label)
-        topView.addSubview(stack)
-        topView.addSubview(stack2)
-        bottomView.addSubview(stack3)
-        
-        tableView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 0).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:   0).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: 0).isActive = true
-        
-        bottomView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        bottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:   0).isActive = true
-        bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:   0).isActive = true
-        
-        topView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        topView.heightAnchor.constraint(equalToConstant: 160).isActive = true
-        topView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        topView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:   0).isActive = true
-        
-        button.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: -25).isActive = true
-        button.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        label.topAnchor.constraint(equalTo: topView.topAnchor, constant: 20).isActive = true
-        label.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        label.widthAnchor.constraint(equalToConstant: 60).isActive = true
-    
-        stack.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -32).isActive = true
-        stack.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        stack.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 0).isActive = true
-        stack.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: 0).isActive = true
-        
-        stack2.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -2).isActive = true
-        stack2.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        stack2.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 0).isActive = true
-        stack2.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: 0).isActive = true
-        
-        stack3.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: 0).isActive = true
-        stack3.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor, constant: 0).isActive = true
-        stack3.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        stack3.heightAnchor.constraint(equalToConstant: 50).isActive = true
-    }
     
     func takeDate(type: DateType, dateString: String?) -> String {
     
@@ -282,7 +222,7 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
             let result = try context.fetch(fetch)
             if result.count > 0 {
                 currentState = result.first
-                tcv.dateLabel.text = currentState?.wartosc
+                dateLabel.text = currentState?.wartosc
                 print("miejstuTU")
             } else {
                 
@@ -290,7 +230,7 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
                 dzien.wartosc = plusOneDay
                 try context.save()
                 self.currentState = dzien
-                tcv.dateLabel.text = currentState?.wartosc
+                dateLabel.text = currentState?.wartosc
                 print("DrugieMiejsc")
                 
             }
@@ -299,7 +239,7 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
             print ( "\(error)")
             }
         updateLabels()
-        tcv.table.reloadData()
+        table.reloadData()
 
     }
     
@@ -316,14 +256,14 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
             let result = try context.fetch(fetch)
             if result.count > 0 {
                 currentState = result.first
-                tcv.dateLabel.text = currentState?.wartosc
+                dateLabel.text = currentState?.wartosc
             } else {
                 
                 let dzien = Day(context: context)
                 dzien.wartosc = backOneDay
                 try context.save()
                 currentState = dzien
-                tcv.dateLabel.text = currentState?.wartosc
+                dateLabel.text = currentState?.wartosc
             }
             
         }catch let error as NSError {
@@ -331,16 +271,16 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
             
     }
         updateLabels()
-        tcv.table.reloadData()
+       table.reloadData()
     }
     
     func updateLabels() {
 
-        tcv.label.text = "\(String(self.sumMacro(macro: MacroDataType.calorieField))) kcal"
+        label.text = "\(String(self.sumMacro(macro: MacroDataType.calorieField))) kcal"
         print(self.sumMacro(macro: MacroDataType.calorieField))
-        tcv.proteinLabelText.text = String(self.sumMacro(macro: MacroDataType.proteinField))
-        tcv.carbLabelText.text = String(self.sumMacro(macro: MacroDataType.carbField))
-        tcv.fatLabelText.text = String(self.sumMacro(macro: MacroDataType.fatField))
+        proteinLabelText.text = String(self.sumMacro(macro: MacroDataType.proteinField))
+        carbLabelText.text = String(self.sumMacro(macro: MacroDataType.carbField))
+        fatLabelText.text = String(self.sumMacro(macro: MacroDataType.fatField))
      
     }
  

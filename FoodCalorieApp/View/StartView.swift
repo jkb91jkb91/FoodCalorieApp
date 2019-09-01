@@ -8,9 +8,23 @@
 
 import UIKit
 
+import  SnapKit
 class StartView: UIView {
-
+    
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
+      addConstraints()
+        
+        self.backgroundColor = UIColor.white
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+  
         let button: UILabel = {
             let view = UILabel()
             view.layer.backgroundColor =  UIColor.red.cgColor
@@ -26,9 +40,22 @@ class StartView: UIView {
             view.font = UIFont(name: "Noteworthy-Bold", size: 30)
             return view
         }()
+    
+    
+    func addConstraints() {
         
+        self.addSubview(button)
+
         
-        
+        button.snp.makeConstraints {[unowned self ] (make : ConstraintMaker) -> Void in
+           make.top.equalToSuperview().offset(250)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(300)
+            make.height.equalTo(50)
+        }
+    
 
     
+}
+
 }

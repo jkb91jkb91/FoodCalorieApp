@@ -15,6 +15,18 @@ import UIKit
 class  TableViews: UIView {
     
     
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addConstraints()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     func createStackView(view1: UIView, view2: UIView, view3: UIView) -> UIStackView {
     
         let view = UIStackView(arrangedSubviews: [view1,view2,view3])
@@ -226,6 +238,67 @@ let arrowButton2: UIButton = {
     
     
     
+    func addConstraints() {
+        
+        
+       
+        
+      
+        let stack = createStackView(view1: proteinlabel, view2: carblabel, view3: fatlabel)
+
+        let stack3 = createStackView(view1: arrowButton2, view2: dateLabel, view3: arrowButton1)
+ 
+    
+        let stack2 = createStackView(view1: proteinLabelText, view2: carbLabelText, view3: fatLabelText)
+        addSubview(table)
+        addSubview(bottomView)
+        addSubview(button)
+        addSubview(topView)
+        addSubview(label)
+        addSubview(stack)
+        addSubview(stack2)
+        addSubview(stack3)
+        
+        table.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 0).isActive = true
+        table.trailingAnchor.constraint(equalTo: trailingAnchor, constant:   0).isActive = true
+        table.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        table.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: 0).isActive = true
+        
+        bottomView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        bottomView.bottomAnchor.constraint(equalTo: bottomAnchor, constant:   0).isActive = true
+        bottomView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        bottomView.trailingAnchor.constraint(equalTo: trailingAnchor, constant:   0).isActive = true
+        
+        topView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+        topView.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        topView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        topView.trailingAnchor.constraint(equalTo: trailingAnchor, constant:   0).isActive = true
+        
+        button.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: -25).isActive = true
+        button.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        label.topAnchor.constraint(equalTo: topView.topAnchor, constant: 20).isActive = true
+        label.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        label.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        stack.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -32).isActive = true
+        stack.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        stack.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 0).isActive = true
+        stack.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: 0).isActive = true
+        
+        stack2.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -2).isActive = true
+        stack2.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        stack2.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 0).isActive = true
+        stack2.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: 0).isActive = true
+        
+        stack3.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: 0).isActive = true
+        stack3.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor, constant: 0).isActive = true
+        stack3.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        stack3.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
     
     
     

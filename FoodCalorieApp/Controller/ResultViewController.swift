@@ -11,24 +11,34 @@ import UIKit
 class ResultViewController: UINavigationController, UICollectionViewDelegateFlowLayout,UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
     
+    
+    
+    unowned var resultView: ResultView {return self.view as! ResultView}
+    unowned var collectionView: UICollectionView { return resultView.collectionView}
+    unowned var searchbar : UISearchBar { return resultView.searchbar}
+    unowned var arrowButton: UIButton { return resultView.arrowButton}
+    
+    
+    
     var post = [Food]()
     var current: Day!
-    var resultViewInstance = ResultView() 
+  
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    
+    override func loadView() {
+        self.view = ResultView()
+    }
   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        resultViewInstance.collectionView.register(ResultCell.self, forCellWithReuseIdentifier: "cell")
-        addConstraint()
-        resultViewInstance.collectionView.delegate = self
-        resultViewInstance.collectionView.dataSource = self
-        resultViewInstance.searchbar.delegate = self
-        resultViewInstance.arrowButton.addTarget(self, action: #selector(back), for: .touchUpInside)
+        
+        collectionView.register(ResultCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        searchbar.delegate = self
+        arrowButton.addTarget(self, action: #selector(back), for: .touchUpInside)
  }
     
     
@@ -145,32 +155,6 @@ class ResultViewController: UINavigationController, UICollectionViewDelegateFlow
     }
    
     
-    func addConstraint() {
-        
-        
-        
-        let topView = resultViewInstance.topView
-        let searchbar = resultViewInstance.searchbar
-        let collectionView = resultViewInstance.collectionView
-        let arrowButton = resultViewInstance.arrowButton
-        
-        view.addSubview(topView)
-        view.addSubview(searchbar)
-        view.addSubview(collectionView)
-        topView.addSubview(arrowButton)
-        topView.topAnchor.constraint(equalTo: view.topAnchor, constant:  0).isActive = true
-        topView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        topView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        topView.bottomAnchor.constraint(equalTo: searchbar.topAnchor, constant: 0).isActive = true
-        searchbar.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 0).isActive = true
-        searchbar.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        searchbar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        arrowButton.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 20).isActive = true
-        arrowButton.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -5).isActive = true
-        arrowButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        arrowButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -184,12 +168,12 @@ class ResultViewController: UINavigationController, UICollectionViewDelegateFlow
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     
-        PostNetworking.getPost(input: resultViewInstance.searchbar.text!) { (response) in
+        PostNetworking.getPost(input: searchbar.text!) { (response) in
            print(response)
             print(response.posts.count)
             self.post = response.posts
            DispatchQueue.main.async {
-            self.resultViewInstance.collectionView.reloadData()
+            self.collectionView.reloadData()
             }
         }
     }

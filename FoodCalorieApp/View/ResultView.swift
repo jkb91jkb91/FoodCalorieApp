@@ -13,7 +13,14 @@ class ResultView : UIView {
     
     
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addConstraint()
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     let collectionView: UICollectionView = {
@@ -38,7 +45,6 @@ class ResultView : UIView {
     }()
     
     
-    
     let searchbar: UISearchBar = {
         
         let view = UISearchBar()
@@ -58,4 +64,25 @@ class ResultView : UIView {
     }()
     
     
+    
+    func addConstraint() {
+        
+    
+        addSubview(topView)
+        addSubview(searchbar)
+        addSubview(collectionView)
+        topView.addSubview(arrowButton)
+        topView.topAnchor.constraint(equalTo: topAnchor, constant:  0).isActive = true
+        topView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        topView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
+        topView.bottomAnchor.constraint(equalTo: searchbar.topAnchor, constant: 0).isActive = true
+        searchbar.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 0).isActive = true
+        searchbar.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        searchbar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        arrowButton.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 20).isActive = true
+        arrowButton.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -5).isActive = true
+        arrowButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        arrowButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+    }
 }

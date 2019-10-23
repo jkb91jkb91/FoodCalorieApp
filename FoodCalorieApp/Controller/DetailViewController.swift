@@ -5,11 +5,15 @@
 //  Created by XCodeClub on 2019-08-08.
 //  Copyright © 2019 XCodeClub. All rights reserved.
 //
+//MARK:-Modules
 
 import UIKit
 
-class DetailViewController: UIViewController, UITextFieldDelegate {
+//MARK:-Class
+
+class DetailViewController: UIViewController {
    
+//MARK:-Outlets
     
     unowned var detailView : ViewForDetailViewController { return self.view as! ViewForDetailViewController}
     unowned var productField : UITextField {return detailView.productField}
@@ -19,36 +23,30 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     unowned var proteinField: UITextField { return detailView.proteinField}
     unowned var carbField: UITextField { return detailView.carbField}
     unowned var fatField: UITextField { return detailView.fatField}
-    
+
+//Mark:-Properties
     
     var current: Day!
-
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+//Mark:-Lifecycle
     
     override func loadView() {
         self.view = ViewForDetailViewController()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
      
-       
-      
-       productField.delegate = self
-       calorieField.delegate = self
+        productField.delegate = self
+        calorieField.delegate = self
         saveBtn.addTarget(self, action: #selector(Save), for: .touchUpInside)
-      backBtn.addTarget(self, action: #selector(back), for: .touchUpInside)
+        backBtn.addTarget(self, action: #selector(back), for: .touchUpInside)
         
-        
-
-    
     }
 
     
     @objc func Save() {
-        
         let meal = Meals(context: context)
         meal.productField = productField.text
         meal.calorieField = Int16(calorieField.text!) ?? 0
@@ -70,12 +68,17 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return true
-    }
-    
     @objc func back() {
         dismiss(animated: true , completion: nil)
     }
     
+}
+
+//MARK:-UITextFieldDelegate extension
+
+extension DetailViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
+    }
 }

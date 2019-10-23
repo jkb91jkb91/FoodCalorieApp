@@ -6,16 +6,17 @@
 //  Copyright © 2019 XCodeClub. All rights reserved.
 //
 
+//MARK:-Modules
+
 import UIKit
 import ObjectiveC
 import CoreData
 
-
-
+//MARK: Class
 
 class TableController: UIViewController  {
     
-    //MARK: - Outlets
+//MARK: - Outlets
     
     unowned var tableViews: TableViews { return self.view as! TableViews}
     unowned var table: UITableView { return tableViews.table}
@@ -28,35 +29,24 @@ class TableController: UIViewController  {
     unowned var carbLabelText: UILabel { return tableViews.carbLabelText}
     unowned var fatLabelText: UILabel { return tableViews.fatLabelText}
     
-  
+
+//MARK: - Properties
     
-    //MARK: - Properties
-    
+    let cellIdentifier = "cell"
     var currentState : Day?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-    
-    //MARK: -Lifecycle
+//MARK: -Lifecycle
     
     override func loadView() {
         self.view = TableViews()
     }
     
-  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
- 
-        table.register(TableViewCell.self, forCellReuseIdentifier: "cell")
-        table.dataSource = self
-        table.delegate = self
+        setupUI()
         
-        button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-        arrowButton1.addTarget(self, action: #selector(rightArrowAction), for: .touchUpInside)
-        arrowButton2.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
-        
- 
         let date = takeDate(type: .normal, dateString: nil)
         print(date)
         
@@ -70,14 +60,12 @@ class TableController: UIViewController  {
             if result.count > 0 {
                 currentState = result.first
                 dateLabel.text = currentState?.wartosc
- 
-            } else {
                 
+            } else {
                 let dzien = Day(context: context)
                 dzien.wartosc = date
                 currentState = dzien
                 try context.save()
-                
                 dateLabel.text = date
                 print("niewie")
             }
@@ -95,55 +83,19 @@ class TableController: UIViewController  {
     
     }
     
-   
+//MARK:-UISetup
     
-   
-    //MARK: -Functions
-
-    func takeDate(type: DateType, dateString: String?) -> String {
-    
-    switch type {
-    
-    case .normal:
-    
-    let today = Date()
-    let calendar = Calendar.current
-    
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = .short
-    let dateFromString = dateFormatter.string(from: today)
-    return dateFromString
-    
-    
-    case .forward:
-    
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = .short
-    let dateFromString = dateFormatter.date(from: dateString!)
-    let calendar = Calendar.current
-    let modifiedDate = calendar.date(byAdding: .day, value: 1, to: dateFromString!)
-    dateFormatter.dateStyle = .short
-    let stringFormat = dateFormatter.string(from: modifiedDate!)
-    return stringFormat
-    
-    case .back:
-    
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = .short
-    let dateFromString = dateFormatter.date(from: dateString!)
- 
-    let calendar = Calendar.current
-    let modifiedDate = calendar.date(byAdding: .day, value: -1, to: dateFromString!)
-
-    dateFormatter.dateStyle = .short
-    let stringFormat = dateFormatter.string(from: modifiedDate!)
-    print(stringFormat)
-    return stringFormat
-    
-    
-        }
+    func setupUI(){
+        table.register(TableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        table.dataSource = self
+        table.delegate = self
+        
+        button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
+        arrowButton1.addTarget(self, action: #selector(rightArrowAction), for: .touchUpInside)
+        arrowButton2.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
     }
-
+    
+//MARK:-TargetActions
     
     @objc func showAlert() {
         let alert = UIAlertController(title: "Choose Method", message: nil, preferredStyle: .alert)
@@ -161,11 +113,8 @@ class TableController: UIViewController  {
         present(alert, animated: true, completion: nil)
     }
    
-    
     @objc func rightArrowAction() {
-        
         let current = currentState!.wartosc
-  
         let plusOneDay = takeDate(type: .forward, dateString: current)
         print("plusOneDay = \(plusOneDay)")
         let fetch :NSFetchRequest<Day> = Day.fetchRequest()
@@ -178,16 +127,13 @@ class TableController: UIViewController  {
                 dateLabel.text = currentState?.wartosc
                 print("miejstuTU")
             } else {
-                
                 let dzien = Day(context: context)
                 dzien.wartosc = plusOneDay
                 try context.save()
                 self.currentState = dzien
                 dateLabel.text = currentState?.wartosc
                 print("DrugieMiejsc")
-                
             }
-            
         }catch let error as NSError {
             print ( "\(error)")
             }
@@ -197,7 +143,6 @@ class TableController: UIViewController  {
     }
     
     @objc func leftAction() {
-        
         let current = currentState!.wartosc
         let backOneDay = takeDate(type: .back, dateString: current)
         print("plusOneDay = \(backOneDay)")
@@ -205,30 +150,60 @@ class TableController: UIViewController  {
         fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Day.wartosc), backOneDay)
         
         do {
-            
             let result = try context.fetch(fetch)
             if result.count > 0 {
                 currentState = result.first
                 dateLabel.text = currentState?.wartosc
             } else {
-                
                 let dzien = Day(context: context)
                 dzien.wartosc = backOneDay
                 try context.save()
                 currentState = dzien
                 dateLabel.text = currentState?.wartosc
             }
-            
         }catch let error as NSError {
             print ( "\(error)")
-            
-    }
+        }
         updateLabels()
        table.reloadData()
     }
     
-    func updateLabels() {
+    //MARK: -Functions
 
+       func takeDate(type: DateType, dateString: String?) -> String {
+           switch type {
+           case .normal:
+               let today = Date()
+               let calendar = Calendar.current
+               let dateFormatter = DateFormatter()
+               dateFormatter.dateStyle = .short
+               let dateFromString = dateFormatter.string(from: today)
+               return dateFromString
+           
+           case .forward:
+               let dateFormatter = DateFormatter()
+               dateFormatter.dateStyle = .short
+               let dateFromString = dateFormatter.date(from: dateString!)
+               let calendar = Calendar.current
+               let modifiedDate = calendar.date(byAdding: .day, value: 1, to: dateFromString!)
+               dateFormatter.dateStyle = .short
+               let stringFormat = dateFormatter.string(from: modifiedDate!)
+               return stringFormat
+           
+           case .back:
+               let dateFormatter = DateFormatter()
+               dateFormatter.dateStyle = .short
+               let dateFromString = dateFormatter.date(from: dateString!)
+               let calendar = Calendar.current
+               let modifiedDate = calendar.date(byAdding: .day, value: -1, to: dateFromString!)
+               dateFormatter.dateStyle = .short
+               let stringFormat = dateFormatter.string(from: modifiedDate!)
+               print(stringFormat)
+               return stringFormat
+           }
+       }
+    
+    func updateLabels() {
         label.text = "\(String(self.sumMacro(macro: MacroDataType.calorieField))) kcal"
         print(self.sumMacro(macro: MacroDataType.calorieField))
         proteinLabelText.text = String(self.sumMacro(macro: MacroDataType.proteinField))
@@ -238,11 +213,8 @@ class TableController: UIViewController  {
     }
  
     func sumMacro(macro: MacroDataType) ->Int16 {
-        
         switch macro {
-            
-        case.calorieField:
-            
+            case.calorieField:
             var calSum: Int16 = 0
             let count = currentState!.meals!.count
             for i in 0..<count {
@@ -262,7 +234,7 @@ class TableController: UIViewController  {
             }
             return calSum
             
-            case.carbField:
+        case.carbField:
             var calSum: Int16 = 0
             let count = currentState!.meals!.count
             for i in 0..<count {
@@ -282,10 +254,10 @@ class TableController: UIViewController  {
             }
             return calSum
         }
-        
     }
 }
-//MARK: -UITableViweDataSource
+
+//MARK: -UITableViweDataSource extension
 
 extension TableController: UITableViewDataSource {
     
@@ -299,7 +271,7 @@ extension TableController: UITableViewDataSource {
       
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           
-        guard let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
+        guard let cell = table.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TableViewCell else {
               return UITableViewCell() }
           
           guard let meals = currentState?.meals?[indexPath.row] as? Meals
@@ -313,11 +285,9 @@ extension TableController: UITableViewDataSource {
       }
 }
 
-
-//MARK: - UITableViewDelegate
+//MARK: - UITableViewDelegate extension
 
 extension TableController: UITableViewDelegate {
-    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
            if editingStyle == .delete {
@@ -325,11 +295,8 @@ extension TableController: UITableViewDelegate {
                guard let toRemove = currentState?.meals![indexPath.row] as? Meals else {
                    return
                }
-               
-               context.delete(toRemove)
-               
+            context.delete(toRemove)
                do {
-                   
                    try context.save()
                    table.deleteRows(at: [indexPath], with: .automatic)
                } catch let error as NSError {
@@ -342,6 +309,4 @@ extension TableController: UITableViewDelegate {
            
            return CGFloat(100)
        }
-     
-       
 }

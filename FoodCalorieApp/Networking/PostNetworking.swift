@@ -13,6 +13,11 @@ class PostNetworking {
     
     
     private init() {}
+    
+    
+    
+    
+    
 
    static func getPost(input: String, completion: @escaping (GetResponse) -> Void) {
 

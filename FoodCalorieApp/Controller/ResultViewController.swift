@@ -10,21 +10,15 @@ import UIKit
 
 class ResultViewController: UINavigationController, UICollectionViewDelegateFlowLayout,UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
-    
-    
-    
     unowned var resultView: ResultView {return self.view as! ResultView}
     unowned var collectionView: UICollectionView { return resultView.collectionView}
     unowned var searchbar : UISearchBar { return resultView.searchbar}
     unowned var arrowButton: UIButton { return resultView.arrowButton}
-    
-    
-    
+
     var post = [Food]()
     var current: Day!
   
-    
-    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func loadView() {
         self.view = ResultView()

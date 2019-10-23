@@ -5,13 +5,14 @@
 //  Created by XCodeClub on 2019-08-31.
 //  Copyright © 2019 XCodeClub. All rights reserved.
 //
+//MARK:-Modules
 
 import Foundation
 import UIKit
 
+//MARK:-Class
+
 class ResultView : UIView {
-    
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,7 +23,6 @@ class ResultView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     let collectionView: UICollectionView = {
         let width = Int(UIScreen.main.bounds.width)
         let height = Int(UIScreen.main.bounds.height)
@@ -30,7 +30,6 @@ class ResultView : UIView {
         cview.backgroundColor = UIColor.white
         return cview
     }()
-    
     
     let topView: UIView = {
         let view = UIView()
@@ -44,9 +43,7 @@ class ResultView : UIView {
         return view
     }()
     
-    
     let searchbar: UISearchBar = {
-        
         let view = UISearchBar()
         view.placeholder = "Type something in english"
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -54,20 +51,15 @@ class ResultView : UIView {
     }()
     
     let arrowButton: UIButton = {
-        
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        
         view.setImage(UIImage(named: "c"), for: .normal)
-        
         return view
     }()
     
-    
+//MARK:-Function-addConstraint
     
     func addConstraint() {
-        
-    
         addSubview(topView)
         addSubview(searchbar)
         addSubview(collectionView)
@@ -83,6 +75,5 @@ class ResultView : UIView {
         arrowButton.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -5).isActive = true
         arrowButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         arrowButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        
     }
 }

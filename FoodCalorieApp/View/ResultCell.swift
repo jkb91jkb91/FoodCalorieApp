@@ -5,24 +5,26 @@
 //  Created by XCodeClub on 2019-08-11.
 //  Copyright © 2019 XCodeClub. All rights reserved.
 //
+//MARK:-Modules
 
 import UIKit
 import SnapKit
 
+//MARK:- Class
+
 class ResultCell: UICollectionViewCell {
-    
-    
     
     override init(frame: CGRect) {
         super.init(frame:frame)
         
         addConstraints()
-      
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+//MARK:-UIElements
     
     var Namelabel: UILabel = {
         let view = UILabel()
@@ -41,16 +43,103 @@ class ResultCell: UICollectionViewCell {
         return view
     }()
     
+    let calorielabel: UILabel = {
+        let view = UILabel()
+        view.layer.backgroundColor =  UIColor.white.cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
+        view.text = "kCal:"
+        view.textAlignment = .center
+        view.textColor = .black
+        return view
+    }()
+    
+    let proteinlabel: UILabel = {
+        let view = UILabel()
+        view.layer.backgroundColor =  UIColor.white.cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
+        view.text = "Protein:"
+        view.textAlignment = .center
+        view.textColor = .black
+        return view
+    }()
+    
+    let carblabel: UILabel = {
+        let view = UILabel()
+        view.layer.backgroundColor =  UIColor.white.cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = "Carbohydrate:"
+        view.textAlignment = .center
+        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
+        view.textColor = .black
+        return view
+    }()
+    
+    let fatlabel: UILabel = {
+        let view = UILabel()
+        view.layer.backgroundColor =  UIColor.white.cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
+        view.text = "Fat:"
+        view.textAlignment = .center
+        view.textColor = .black
+        return view
+    }()
+
+    let calorieTextlabel: UILabel = {
+        let view = UILabel()
+        view.layer.backgroundColor =  UIColor.white.cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
+        view.text = "kCal:"
+        view.textAlignment = .center
+        view.textColor = .red
+        return view
+    }()
+    
+    let proteinTextlabel: UILabel = {
+        let view = UILabel()
+        view.layer.backgroundColor =  UIColor.white.cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
+        view.text = "Protein:"
+        view.textAlignment = .center
+        view.textColor = .red
+        return view
+    }()
+    
+    let carbTextlabel: UILabel = {
+        let view = UILabel()
+        view.layer.backgroundColor =  UIColor.white.cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = "Carbohydrate:"
+        view.textAlignment = .center
+        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
+        view.textColor = .red
+        return view
+    }()
+    
+    let fatTextlabel: UILabel = {
+        let view = UILabel()
+        view.layer.backgroundColor =  UIColor.white.cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
+        view.text = "Fat:"
+        view.textAlignment = .center
+        view.textColor = .red
+        return view
+    }()
+
+//MARK:-Functions
+    
     func addConstraints() {
-        
         addSubview(separatorView)
         addSubview(Namelabel)
         addSubview(calorielabel)
         addSubview(proteinlabel)
         addSubview(carblabel)
         addSubview(fatlabel)
-        
-        
         addSubview(calorieTextlabel)
         addSubview(proteinTextlabel)
         addSubview(carbTextlabel)
@@ -61,7 +150,6 @@ class ResultCell: UICollectionViewCell {
         Namelabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10).isActive = true
         Namelabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
  
-        
         separatorView.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(10)
@@ -74,24 +162,23 @@ class ResultCell: UICollectionViewCell {
             make.leading.equalToSuperview().offset(5)
             make.width.equalTo(70)
             make.height.equalTo(20)
-            
         }
-       
-        proteinlabel.snp.makeConstraints { (make) in
+        
+       proteinlabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(separatorView.snp.bottom).offset(-20)
             make.leading.equalTo(calorielabel.snp.trailing).offset(5)
             make.width.equalTo(70)
             make.height.equalTo(20)
         }
-      
-        carblabel.snp.makeConstraints { (make) in
+        
+      carblabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(separatorView.snp.bottom).offset(-20)
             make.leading.equalTo(proteinlabel.snp.trailing).offset(5)
             make.width.equalTo(100)
             make.height.equalTo(20)
         }
-       
-        fatlabel.snp.makeConstraints { (make) in
+        
+       fatlabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(separatorView.snp.bottom).offset(-20)
             make.leading.equalTo(carblabel.snp.trailing).offset(5)
             make.width.equalTo(70)
@@ -117,121 +204,17 @@ class ResultCell: UICollectionViewCell {
             make.leading.equalTo(proteinlabel.snp.trailing).offset(5)
             make.width.equalTo(100)
             make.height.equalTo(16)
-            }
-       
+        }
         
-        fatTextlabel.snp.makeConstraints { (make) in
+       fatTextlabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(separatorView.snp.bottom).offset(-2)
             make.leading.equalTo(carblabel.snp.trailing).offset(5)
             make.width.equalTo(70)
             make.height.equalTo(16)
         }
-        
-        
     }
     
-    
-    
-    let calorielabel: UILabel = {
-        let view = UILabel()
-        view.layer.backgroundColor =  UIColor.white.cgColor
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.text = "kCal:"
-        view.textAlignment = .center
-        view.textColor = .black
-        return view
-        
-    }()
-    
-    let proteinlabel: UILabel = {
-        let view = UILabel()
-        view.layer.backgroundColor =  UIColor.white.cgColor
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.text = "Protein:"
-        view.textAlignment = .center
-        view.textColor = .black
-        return view
-        
-    }()
-    
-    let carblabel: UILabel = {
-        let view = UILabel()
-        view.layer.backgroundColor =  UIColor.white.cgColor
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "Carbohydrate:"
-        view.textAlignment = .center
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.textColor = .black
-        return view
-    }()
-    
-    let fatlabel: UILabel = {
-        let view = UILabel()
-        view.layer.backgroundColor =  UIColor.white.cgColor
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.text = "Fat:"
-        view.textAlignment = .center
-        view.textColor = .black
-        return view
-    }()
-
-    
-    
-    
-    let calorieTextlabel: UILabel = {
-        let view = UILabel()
-        view.layer.backgroundColor =  UIColor.white.cgColor
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.text = "kCal:"
-        view.textAlignment = .center
-        view.textColor = .red
-        return view
-        
-    }()
-    
-    let proteinTextlabel: UILabel = {
-        let view = UILabel()
-        view.layer.backgroundColor =  UIColor.white.cgColor
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.text = "Protein:"
-        view.textAlignment = .center
-        view.textColor = .red
-        return view
-        
-    }()
-    
-    let carbTextlabel: UILabel = {
-        let view = UILabel()
-        view.layer.backgroundColor =  UIColor.white.cgColor
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "Carbohydrate:"
-        view.textAlignment = .center
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.textColor = .red
-        return view
-    }()
-    
-    let fatTextlabel: UILabel = {
-        let view = UILabel()
-        view.layer.backgroundColor =  UIColor.white.cgColor
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.text = "Fat:"
-        view.textAlignment = .center
-        view.textColor = .red
-        return view
-    }()
-    
-    
-    
     func updateResultCell(food: Food ) {
-        
-        
         
         if let lbl = food.label {
             self.Namelabel.text = lbl.uppercased()
@@ -239,7 +222,6 @@ class ResultCell: UICollectionViewCell {
             self.Namelabel.text = ""
         }
         
-    
         if let cal = food.nutrients.ENERC_KCAL {
             self.calorieTextlabel.text = String(cal.rounded())
         } else { self.calorieTextlabel.text = String(0)
@@ -263,12 +245,5 @@ class ResultCell: UICollectionViewCell {
         } else  {
                 self.fatTextlabel.text = String(0)
             }
-        
-        
-        
-        
     }
-    
-    
-    
 }

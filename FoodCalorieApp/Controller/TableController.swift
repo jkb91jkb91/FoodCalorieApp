@@ -13,8 +13,9 @@ import CoreData
 
 
 
-class TableController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TableController: UIViewController  {
     
+    //MARK: - Outlets
     
     unowned var tableViews: TableViews { return self.view as! TableViews}
     unowned var table: UITableView { return tableViews.table}
@@ -29,15 +30,19 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
     
   
     
- 
+    //MARK: - Properties
     
     var currentState : Day?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     
+    //MARK: -Lifecycle
+    
     override func loadView() {
         self.view = TableViews()
     }
+    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +56,7 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
         arrowButton1.addTarget(self, action: #selector(rightArrowAction), for: .touchUpInside)
         arrowButton2.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
         
-      
-        
+ 
         let date = takeDate(type: .normal, dateString: nil)
         print(date)
         
@@ -81,7 +85,6 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
         }catch let error as NSError {
             print ( "\(error)")
         }
-        
         updateLabels()
     }
     
@@ -89,64 +92,14 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         table.reloadData()
         updateLabels()
-        
-    }
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return CGFloat(100)
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
-        guard let meals = currentState?.meals else {
-            return 0
-        }
-        return meals.count
+    
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-      
-        guard let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
-            return UITableViewCell() }
-        
-        guard let meals = currentState?.meals?[indexPath.row] as? Meals
-            else {
-            return cell
-            }
+   
     
-        cell.updateCell(meal: meals)
+   
+    //MARK: -Functions
 
-  /*
-            cell.nameLabel.text = meals.productField
-            cell.calorielabel.text = String(meals.calorieField)
-            cell.proteinLabelText.text = String(meals.proteinField)
-            cell.carbLabelText.text = String(meals.carbField)
-            cell.fatLabelText.text = String(meals.fatField) 
-        */
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-            guard let toRemove = currentState?.meals![indexPath.row] as? Meals else {
-                return
-            }
-            
-            context.delete(toRemove)
-            
-            do {
-                
-                try context.save()
-                table.deleteRows(at: [indexPath], with: .automatic)
-            } catch let error as NSError {
-                print("\(error)")
-            }
-        }
-    }
-
-    
     func takeDate(type: DateType, dateString: String?) -> String {
     
     switch type {
@@ -332,5 +285,63 @@ class TableController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
     }
 }
+//MARK: -UITableViweDataSource
+
+extension TableController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+          
+          guard let meals = currentState?.meals else {
+              return 0
+          }
+          return meals.count
+      }
+      
+      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          
+        guard let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
+              return UITableViewCell() }
+          
+          guard let meals = currentState?.meals?[indexPath.row] as? Meals
+              else {
+              return cell
+              }
+      
+          cell.updateCell(meal: meals)
+
+          return cell
+      }
+}
 
 
+//MARK: - UITableViewDelegate
+
+extension TableController: UITableViewDelegate {
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+           if editingStyle == .delete {
+               
+               guard let toRemove = currentState?.meals![indexPath.row] as? Meals else {
+                   return
+               }
+               
+               context.delete(toRemove)
+               
+               do {
+                   
+                   try context.save()
+                   table.deleteRows(at: [indexPath], with: .automatic)
+               } catch let error as NSError {
+                   print("\(error)")
+               }
+           }
+       }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           
+           return CGFloat(100)
+       }
+     
+       
+}

@@ -8,9 +8,6 @@
 
 import Foundation
 
-
-    
-
 struct Nutrient: Decodable {
     
     var ENERC_KCAL : Float?
@@ -37,7 +34,6 @@ struct Nutrient: Decodable {
   
 }
 
-
 struct Food: Decodable {
     
     var label: String?
@@ -52,7 +48,6 @@ struct Food: Decodable {
         case nutrients = "nutrients"
     }
 }
-
 
 struct hints: Decodable {
     

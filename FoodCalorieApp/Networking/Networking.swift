@@ -10,8 +10,6 @@ import Foundation
 
 class NetworkingService {
     
-
-    
     private init() {}
     
     static let shared = NetworkingService()

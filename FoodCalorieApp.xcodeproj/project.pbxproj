@@ -18,6 +18,10 @@
 		C94D6C0D2302CED7002691A0 /* ViewForDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94D6C0C2302CED7002691A0 /* ViewForDetailViewController.swift */; };
 		C9540EDC231A6E2C0058C941 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9540EDB231A6E2C0058C941 /* ResultView.swift */; };
 		C958E69922FC5B0C006388F9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958E69822FC5B0C006388F9 /* DetailViewController.swift */; };
+		C966F642236384AA00D88F54 /* DateFormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966F641236384AA00D88F54 /* DateFormatterService.swift */; };
+		C966F644236391CB00D88F54 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966F643236391CB00D88F54 /* TimerModel.swift */; };
+		C966F64623639DE400D88F54 /* ImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966F64523639DE400D88F54 /* ImageNames.swift */; };
+		C966F6482363A43700D88F54 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966F6472363A43700D88F54 /* Placeholders.swift */; };
 		C97301E522F864810071B8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97301E422F864810071B8E5 /* AppDelegate.swift */; };
 		C97301E722F864810071B8E5 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97301E622F864810071B8E5 /* StartViewController.swift */; };
 		C97301EC22F864820071B8E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97301EB22F864820071B8E5 /* Assets.xcassets */; };
@@ -53,6 +57,10 @@
 		C94D6C0C2302CED7002691A0 /* ViewForDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForDetailViewController.swift; sourceTree = "<group>"; };
 		C9540EDB231A6E2C0058C941 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		C958E69822FC5B0C006388F9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C966F641236384AA00D88F54 /* DateFormatterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterService.swift; sourceTree = "<group>"; };
+		C966F643236391CB00D88F54 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		C966F64523639DE400D88F54 /* ImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNames.swift; sourceTree = "<group>"; };
+		C966F6472363A43700D88F54 /* Placeholders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholders.swift; sourceTree = "<group>"; };
 		C97301E122F864810071B8E5 /* FoodCalorieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodCalorieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97301E422F864810071B8E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C97301E622F864810071B8E5 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +131,7 @@
 			children = (
 				C9743D442317D9BE007A93FE /* CoreData */,
 				C945F43123030F47001CBABB /* Object.swift */,
+				C966F643236391CB00D88F54 /* TimerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -150,7 +159,7 @@
 			children = (
 				C9C4372D23607DF0004ADDF0 /* Extensions */,
 				C9C43728236074FA004ADDF0 /* Services */,
-				C9743D3E2317D79E007A93FE /* Enums */,
+				C9743D3E2317D79E007A93FE /* Constants */,
 				C94D6C052302BCA1002691A0 /* Model */,
 				C94D6BFE2302BB85002691A0 /* Controller */,
 				C97301F722F865CB0071B8E5 /* View */,
@@ -185,14 +194,16 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		C9743D3E2317D79E007A93FE /* Enums */ = {
+		C9743D3E2317D79E007A93FE /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				C9743D3F2317D7AE007A93FE /* DateType.swift */,
 				C9743D5523181DE5007A93FE /* MacroDataType.swift */,
 				C9C4373123607FC9004ADDF0 /* Font.swift */,
+				C966F64523639DE400D88F54 /* ImageNames.swift */,
+				C966F6472363A43700D88F54 /* Placeholders.swift */,
 			);
-			path = Enums;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		C9743D442317D9BE007A93FE /* CoreData */ = {
@@ -247,6 +258,7 @@
 				C973020022F89E6A0071B8E5 /* Networking */,
 				C9C4372923607529004ADDF0 /* AlertService.swift */,
 				C9C4372B23607A45004ADDF0 /* CoreDataService.swift */,
+				C966F641236384AA00D88F54 /* DateFormatterService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -376,10 +388,12 @@
 				C97301E722F864810071B8E5 /* StartViewController.swift in Sources */,
 				C9743D402317D7AE007A93FE /* DateType.swift in Sources */,
 				C94D6C0B2302C3BF002691A0 /* TableViews.swift in Sources */,
+				C966F6482363A43700D88F54 /* Placeholders.swift in Sources */,
 				C9C4372723607194004ADDF0 /* TC&Extensions.swift in Sources */,
 				C9743D532317DBAF007A93FE /* Meals+CoreDataClass.swift in Sources */,
 				C9743D5623181DE5007A93FE /* MacroDataType.swift in Sources */,
 				C97301E522F864810071B8E5 /* AppDelegate.swift in Sources */,
+				C966F64623639DE400D88F54 /* ImageNames.swift in Sources */,
 				C9743D512317DBAF007A93FE /* Day+CoreDataClass.swift in Sources */,
 				C948EFA122FAC61400179711 /* TableViewCell.swift in Sources */,
 				C94D6C092302BD40002691A0 /* StartView.swift in Sources */,
@@ -400,7 +414,9 @@
 				C958E69922FC5B0C006388F9 /* DetailViewController.swift in Sources */,
 				C94AFF8623005EEE00C13B62 /* ResultCell.swift in Sources */,
 				C94D6C0D2302CED7002691A0 /* ViewForDetailViewController.swift in Sources */,
+				C966F644236391CB00D88F54 /* TimerModel.swift in Sources */,
 				C9F4D3C322F97EF000E094E5 /* TableController.swift in Sources */,
+				C966F642236384AA00D88F54 /* DateFormatterService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

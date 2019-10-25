@@ -9,15 +9,13 @@
 import UIKit
 import CoreData
 
-class CoreDataService {
+public let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+/*
+struct CoreDataService {
     
-    private init() {}
+   
     
-    
-    static let shared = CoreDataService()
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    /*
-    func fetchData(date: String,  currentState: Day) {
+    static func fetchData(date: String,  currentState: Day) {
         let fetch :NSFetchRequest<Day> = Day.fetchRequest()
               fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Day.wartosc),date)
               do {
@@ -34,15 +32,15 @@ class CoreDataService {
                       currentState = dzien
                       try context.save()
                       dateLabel.text = date
-                      print("niewie")
+                     
                   }
                   
-              }catch let error as NSError {
+              } catch let error as NSError {
                   print ( "\(error)")
               }
-        */
+        
     }
-    /*
+    
     func saveData(){
         
         
@@ -68,11 +66,11 @@ class CoreDataService {
         
     }
     
+    
+    
+    
+ }
     */
-    
-    
-    
-    
     
     
     

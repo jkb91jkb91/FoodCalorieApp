@@ -29,12 +29,10 @@ class TableController: UIViewController  {
     unowned var carbLabelText: UILabel { return tableViews.carbLabelText}
     unowned var fatLabelText: UILabel { return tableViews.fatLabelText}
     
-
 //MARK: - Properties
     
     let cellIdentifier = "cell"
-    var currentState : Day?
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var currentState : Day? 
 
 //MARK: -Lifecycle
     
@@ -48,20 +46,16 @@ class TableController: UIViewController  {
         setupUI()
         
         let date = showDate(type: .normal, dateString: nil)
-        print(date)
-        
+        //CoreDataService.fetchData(date: date, currentState: currentState!)
         
         let fetch :NSFetchRequest<Day> = Day.fetchRequest()
         fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Day.wartosc),date)
-        
         do {
-            
             let result = try context.fetch(fetch)
             if result.count > 0 {
                 currentState = result.first
                 dateLabel.text = currentState?.wartosc
-                
-            } else {
+                } else {
                 let dzien = Day(context: context)
                 dzien.wartosc = date
                 currentState = dzien
@@ -69,8 +63,7 @@ class TableController: UIViewController  {
                 dateLabel.text = date
                 print("niewie")
             }
-            
-        }catch let error as NSError {
+            } catch let error as NSError {
             print ( "\(error)")
         }
         updateLabels()
@@ -81,16 +74,14 @@ class TableController: UIViewController  {
             self.table.reloadData()
             self.updateLabels()
         }
-        
     }
     
 //MARK:-UISetup
     
-    func setupUI(){
+    func setupUI() {
         table.register(TableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         table.dataSource = self
         table.delegate = self
-        
         button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
         arrowButton1.addTarget(self, action: #selector(rightArrowAction), for: .touchUpInside)
         arrowButton2.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
@@ -128,8 +119,7 @@ class TableController: UIViewController  {
             }
         updateLabels()
         table.reloadData()
-
-    }
+}
     
     @objc func leftAction() {
         let current = currentState!.wartosc
@@ -162,32 +152,11 @@ class TableController: UIViewController  {
        func showDate(type: DateType, dateString: String?) -> String {
            switch type {
            case .normal:
-               let today = Date()
-               let dateFormatter = DateFormatter()
-               dateFormatter.dateStyle = .short
-               let dateFromString = dateFormatter.string(from: today)
-               return dateFromString
-           
+            return DateFormatterService.currendDate()
            case .forward:
-               let dateFormatter = DateFormatter()
-               dateFormatter.dateStyle = .short
-               let dateFromString = dateFormatter.date(from: dateString!)
-               let calendar = Calendar.current
-               let modifiedDate = calendar.date(byAdding: .day, value: 1, to: dateFromString!)
-               dateFormatter.dateStyle = .short
-               let stringFormat = dateFormatter.string(from: modifiedDate!)
-               return stringFormat
-           
+             return DateFormatterService.formatterCounter(value: 1, date: dateString!)
            case .back:
-               let dateFormatter = DateFormatter()
-               dateFormatter.dateStyle = .short
-               let dateFromString = dateFormatter.date(from: dateString!)
-               let calendar = Calendar.current
-               let modifiedDate = calendar.date(byAdding: .day, value: -1, to: dateFromString!)
-               dateFormatter.dateStyle = .short
-               let stringFormat = dateFormatter.string(from: modifiedDate!)
-               print(stringFormat)
-               return stringFormat
+            return DateFormatterService.formatterCounter(value: 1, date: dateString!)
            }
        }
     
@@ -197,8 +166,7 @@ class TableController: UIViewController  {
         proteinLabelText.text = String(self.sumMacro(macro: MacroDataType.proteinField))
         carbLabelText.text = String(self.sumMacro(macro: MacroDataType.carbField))
         fatLabelText.text = String(self.sumMacro(macro: MacroDataType.fatField))
-     
-    }
+     }
  
     func sumMacro(macro: MacroDataType) ->Int16 {
         switch macro {

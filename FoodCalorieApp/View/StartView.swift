@@ -36,10 +36,10 @@ class StartView: UIView {
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.white.cgColor
         view.backgroundColor = .white
-        view.text = "Count your calories"
+        view.text = Placeholders.startViewText.rawValue
         view.textColor = UIColor.black
         view.textAlignment = .center
-        view.font = UIFont(name: "Noteworthy-Bold", size: 30)
+        view.font = UIFont(name: Font.noteworthy.rawValue, size: CGFloat(FontSize.first.rawValue))
         return view
         }()
  

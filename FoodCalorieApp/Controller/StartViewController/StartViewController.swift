@@ -16,7 +16,6 @@ class StartViewController: UIViewController {
     
 //MARK:-Properties
     var counter = 1
-
 //MARK:-Lifecycle
     
     override func loadView() {

@@ -51,7 +51,7 @@ class  TableViews: UIView {
         view.layer.cornerRadius = 25
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.white.cgColor
-        view.setImage(UIImage(named: "unnamed"), for: .normal)
+        view.setImage(UIImage(named: ImageNames.unnamed.rawValue), for: .normal)
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowOpacity = 0.5
@@ -78,7 +78,7 @@ class  TableViews: UIView {
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.white.cgColor
         view.text = String(0)
-        view.font = UIFont(name: "Arial", size: 10)
+        view.font = UIFont(name: Font.arial.rawValue, size: CGFloat(FontSize.verySmall.rawValue))
         view.textAlignment = .center
         view.textColor = .black
         view.layer.shadowColor = UIColor.black.cgColor
@@ -91,8 +91,8 @@ class  TableViews: UIView {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.clear.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 16)
-        view.text = "Protein:"
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.medium.rawValue))
+        view.text = MacroNames.protein.rawValue
         view.textAlignment = .center
         view.textColor = .black
         return view
@@ -103,9 +103,9 @@ class  TableViews: UIView {
         view.layer.backgroundColor =  UIColor.clear.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.clear
-        view.text = "Carbohydrate:"
+        view.text = MacroNames.carbs.rawValue
         view.textAlignment = .center
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 16)
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.medium.rawValue))
         view.textColor = .black
         return view
     }()
@@ -115,8 +115,8 @@ class  TableViews: UIView {
         view.layer.backgroundColor =  UIColor.clear.cgColor
         view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 16)
-        view.text = "Fat:"
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.medium.rawValue))
+        view.text = MacroNames.fat.rawValue
         view.textAlignment = .center
         view.textColor = .black
         return view
@@ -126,8 +126,8 @@ class  TableViews: UIView {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.clear.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 16)
-        view.text = "Protein:"
+        view.font = UIFont(name: Font.helvetica.rawValue, size:CGFloat(FontSize.medium.rawValue))
+        view.text = MacroNames.protein.rawValue
         view.textAlignment = .center
         view.textColor = .red
         return view
@@ -138,9 +138,9 @@ class  TableViews: UIView {
         view.layer.backgroundColor =  UIColor.clear.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.clear
-        view.text = "Carbohydrate:"
+        view.text = MacroNames.carbs.rawValue
         view.textAlignment = .center
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 16)
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.medium.rawValue))
         view.textColor = .red
         return view
     }()
@@ -150,8 +150,8 @@ class  TableViews: UIView {
         view.layer.backgroundColor =  UIColor.clear.cgColor
         view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 16)
-        view.text = "Fat:"
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.medium.rawValue))
+        view.text = MacroNames.fat.rawValue
         view.textAlignment = .center
         view.textColor = .red
         return view
@@ -164,10 +164,10 @@ class  TableViews: UIView {
         view.layer.cornerRadius = 50
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.white.cgColor
-        view.text = "Press \"+\" button"
+        view.text = Placeholders.pulsingLabel.rawValue
         view.textAlignment = .center
         view.textColor = .black
-        view.font = UIFont(name: "Noteworthy-Bold", size: 30)
+        view.font = UIFont(name: Font.noteworthy.rawValue, size: CGFloat(FontSize.first.rawValue))
         return view
     }()
 
@@ -179,14 +179,14 @@ class  TableViews: UIView {
         view.text = ""
         view.textAlignment = .center
         view.textColor = .white
-        view.font = UIFont(name: "AvenirNextCondensed-Bold", size:20)
+        view.font = UIFont(name: Font.avenir.rawValue, size: CGFloat(FontSize.medium.rawValue))
         return view
     }()
 
     let arrowButton1: UIButton = {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.setImage(UIImage(named: "a"), for: .normal)
+        view.setImage(UIImage(named: ImageNames.a.rawValue), for: .normal)
         return view
     }()
 
@@ -194,7 +194,7 @@ class  TableViews: UIView {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 50
-        view.setImage(UIImage(named: "c"), for: .normal)
+        view.setImage(UIImage(named: ImageNames.c.rawValue), for: .normal)
         return view
     }()
     
@@ -202,7 +202,7 @@ class  TableViews: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
-        label.text = "Kuba"
+        label.text = ""
         return label
     }()
     

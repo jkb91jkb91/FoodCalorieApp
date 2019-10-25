@@ -45,7 +45,7 @@ class ResultView : UIView {
     
     let searchbar: UISearchBar = {
         let view = UISearchBar()
-        view.placeholder = "Type something in english"
+        view.placeholder = Placeholders.searchbarPlaceholder.rawValue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -53,7 +53,7 @@ class ResultView : UIView {
     let arrowButton: UIButton = {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.setImage(UIImage(named: "c"), for: .normal)
+        view.setImage(UIImage(named: ImageNames.c.rawValue), for: .normal)
         return view
     }()
     

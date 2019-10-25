@@ -30,7 +30,7 @@ class ResultCell: UICollectionViewCell {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.white.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "Arial", size: 14)
+        view.font = UIFont(name: Font.arial.rawValue, size: CGFloat(FontSize.smallMedium.rawValue))
         view.textAlignment = .center
         view.textColor = .black
         return view
@@ -47,8 +47,8 @@ class ResultCell: UICollectionViewCell {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.white.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.text = "kCal:"
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.small.rawValue))
+        view.text = MacroNames.kal.rawValue
         view.textAlignment = .center
         view.textColor = .black
         return view
@@ -58,8 +58,8 @@ class ResultCell: UICollectionViewCell {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.white.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.text = "Protein:"
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.small.rawValue))
+        view.text = MacroNames.protein.rawValue
         view.textAlignment = .center
         view.textColor = .black
         return view
@@ -69,9 +69,9 @@ class ResultCell: UICollectionViewCell {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.white.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "Carbohydrate:"
+        view.text = MacroNames.carbs.rawValue
         view.textAlignment = .center
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.small.rawValue))
         view.textColor = .black
         return view
     }()
@@ -80,8 +80,8 @@ class ResultCell: UICollectionViewCell {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.white.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.text = "Fat:"
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.small.rawValue))
+        view.text = MacroNames.fat.rawValue
         view.textAlignment = .center
         view.textColor = .black
         return view
@@ -91,8 +91,8 @@ class ResultCell: UICollectionViewCell {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.white.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.text = "kCal:"
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.small.rawValue))
+        view.text = MacroNames.kal.rawValue
         view.textAlignment = .center
         view.textColor = .red
         return view
@@ -102,8 +102,8 @@ class ResultCell: UICollectionViewCell {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.white.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.text = "Protein:"
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.small.rawValue))
+        view.text = MacroNames.protein.rawValue
         view.textAlignment = .center
         view.textColor = .red
         return view
@@ -113,9 +113,9 @@ class ResultCell: UICollectionViewCell {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.white.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "Carbohydrate:"
+        view.text = MacroNames.carbs.rawValue
         view.textAlignment = .center
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.small.rawValue))
         view.textColor = .red
         return view
     }()
@@ -124,8 +124,8 @@ class ResultCell: UICollectionViewCell {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.white.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-        view.text = "Fat:"
+        view.font = UIFont(name: Font.helvetica.rawValue, size: CGFloat(FontSize.small.rawValue))
+        view.text = MacroNames.fat.rawValue
         view.textAlignment = .center
         view.textColor = .red
         return view
@@ -218,12 +218,7 @@ class ResultCell: UICollectionViewCell {
     }
     
     func updateResultCell(food: Food ) {
-        
-        if let lbl = food.label {
-            self.Namelabel.text = lbl.uppercased()
-        } else {
-            self.Namelabel.text = ""
-        }
+        self.Namelabel.text = food.label?.uppercased() ?? ""
         
         if let cal = food.nutrients.ENERC_KCAL {
             self.calorieTextlabel.text = String(cal.rounded())

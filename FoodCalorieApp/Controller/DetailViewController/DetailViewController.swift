@@ -27,7 +27,6 @@ class DetailViewController: UIViewController {
 //Mark:-Properties
     
     var current: Day!
-    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
 //Mark:-Lifecycle
     

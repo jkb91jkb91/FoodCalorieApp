@@ -8,14 +8,10 @@
 
 import Foundation
 
-
-    
-    enum MacroDataType {
-        
-        case calorieField
-        case proteinField
-        case carbField
-        case fatField
-
-    }
+enum MacroDataType {
+    case calorieField
+    case proteinField
+    case carbField
+    case fatField    
+}
 

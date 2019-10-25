@@ -10,7 +10,6 @@ import Foundation
 
 
 enum DateType {
-    
     case normal
     case forward
     case back

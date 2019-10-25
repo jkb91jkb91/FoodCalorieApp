@@ -229,44 +229,60 @@ class  TableViews: UIView {
         addSubview(stack2)
         addSubview(stack3)
         
-        table.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 0).isActive = true
-        table.trailingAnchor.constraint(equalTo: trailingAnchor, constant:   0).isActive = true
-        table.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
-        table.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: 0).isActive = true
+        table.snp.makeConstraints { (make) in
+            make.top.equalTo(topView.snp.bottom)
+            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.bottom.equalTo(bottomView.snp.top)
+        }
         
-        bottomView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        bottomView.bottomAnchor.constraint(equalTo: bottomAnchor, constant:   0).isActive = true
-        bottomView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
-        bottomView.trailingAnchor.constraint(equalTo: trailingAnchor, constant:   0).isActive = true
+        bottomView.snp.makeConstraints { (make) in
+            make.height.equalTo(70)
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+        }
+
+        topView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.height.equalTo(160)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+        }
+
+        button.snp.makeConstraints { (make) in
+            make.top.equalTo(bottomView.snp.top).offset(-25)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(50)
+            make.width.equalTo(50)
+        }
         
-        topView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
-        topView.heightAnchor.constraint(equalToConstant: 160).isActive = true
-        topView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
-        topView.trailingAnchor.constraint(equalTo: trailingAnchor, constant:   0).isActive = true
+        label.snp.makeConstraints { (make) in
+            make.top.equalTo(topView.snp.top).offset(20)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+            make.width.equalTo(60)
+        }
         
-        button.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: -25).isActive = true
-        button.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        stack.snp.makeConstraints { (make) in
+            make.bottom.equalTo(topView.snp.bottom).offset(-32)
+            make.height.equalTo(20)
+            make.leading.equalTo(topView.snp.leading)
+            make.trailing.equalTo(topView.snp.trailing)
+        }
         
-        label.topAnchor.constraint(equalTo: topView.topAnchor, constant: 20).isActive = true
-        label.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        label.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        stack2.snp.makeConstraints { (make) in
+            make.bottom.equalTo(topView.snp.bottom).offset(-2)
+            make.height.equalTo(20)
+            make.leading.equalTo(topView.snp.leading)
+            make.trailing.equalTo(topView.snp.trailing)
+        }
         
-        stack.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -32).isActive = true
-        stack.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        stack.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 0).isActive = true
-        stack.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: 0).isActive = true
-        
-        stack2.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -2).isActive = true
-        stack2.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        stack2.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 0).isActive = true
-        stack2.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: 0).isActive = true
-        
-        stack3.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: 0).isActive = true
-        stack3.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor, constant: 0).isActive = true
-        stack3.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        stack3.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        stack3.snp.makeConstraints { (make) in
+            make.centerX.equalTo(bottomView.snp.centerX)
+            make.centerY.equalTo(bottomView.snp.centerY)
+            make.width.equalTo(300)
+            make.height.equalTo(50)
+        }
     }
 }

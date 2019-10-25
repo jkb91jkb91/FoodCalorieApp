@@ -31,6 +31,12 @@
 		C9743D532317DBAF007A93FE /* Meals+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9743D4F2317DBAF007A93FE /* Meals+CoreDataClass.swift */; };
 		C9743D542317DBAF007A93FE /* Meals+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9743D502317DBAF007A93FE /* Meals+CoreDataProperties.swift */; };
 		C9743D5623181DE5007A93FE /* MacroDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9743D5523181DE5007A93FE /* MacroDataType.swift */; };
+		C9C4372523606E0F004ADDF0 /* RVC&Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4372423606E0F004ADDF0 /* RVC&Extensions.swift */; };
+		C9C4372723607194004ADDF0 /* TC&Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4372623607194004ADDF0 /* TC&Extensions.swift */; };
+		C9C4372A23607529004ADDF0 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4372923607529004ADDF0 /* AlertService.swift */; };
+		C9C4372C23607A45004ADDF0 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4372B23607A45004ADDF0 /* CoreDataService.swift */; };
+		C9C4372F23607E05004ADDF0 /* UIVIewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4372E23607E05004ADDF0 /* UIVIewExtensions.swift */; };
+		C9C4373223607FC9004ADDF0 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4373123607FC9004ADDF0 /* Font.swift */; };
 		C9F4D3C322F97EF000E094E5 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F4D3C222F97EF000E094E5 /* TableController.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +68,12 @@
 		C9743D4F2317DBAF007A93FE /* Meals+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meals+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C9743D502317DBAF007A93FE /* Meals+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meals+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9743D5523181DE5007A93FE /* MacroDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroDataType.swift; sourceTree = "<group>"; };
+		C9C4372423606E0F004ADDF0 /* RVC&Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RVC&Extensions.swift"; sourceTree = "<group>"; };
+		C9C4372623607194004ADDF0 /* TC&Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TC&Extensions.swift"; sourceTree = "<group>"; };
+		C9C4372923607529004ADDF0 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		C9C4372B23607A45004ADDF0 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		C9C4372E23607E05004ADDF0 /* UIVIewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewExtensions.swift; sourceTree = "<group>"; };
+		C9C4373123607FC9004ADDF0 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		C9F4D3C222F97EF000E094E5 /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		F6D5C9C0E80D1C8576DD8FE5 /* Pods_FoodCalorieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodCalorieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -98,10 +110,10 @@
 		C94D6BFE2302BB85002691A0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C97301E622F864810071B8E5 /* StartViewController.swift */,
-				C9F4D3C222F97EF000E094E5 /* TableController.swift */,
-				C958E69822FC5B0C006388F9 /* DetailViewController.swift */,
-				C97301FA22F87C7F0071B8E5 /* ResultViewController.swift */,
+				C9C4372023606B8A004ADDF0 /* StartViewController */,
+				C9C4372123606B9F004ADDF0 /* TableController */,
+				C9C4372223606BB6004ADDF0 /* DetailViewController */,
+				C9C4372323606BCB004ADDF0 /* ResultViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -109,6 +121,7 @@
 		C94D6C052302BCA1002691A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C9743D442317D9BE007A93FE /* CoreData */,
 				C945F43123030F47001CBABB /* Object.swift */,
 			);
 			path = Model;
@@ -119,7 +132,6 @@
 			children = (
 				C97301E322F864810071B8E5 /* FoodCalorieApp */,
 				C97301E222F864810071B8E5 /* Products */,
-				C9743D412317D82B007A93FE /* FoodCalorieApp.xcdatamodeld */,
 				6A63580CB1FBFC7584115354 /* Pods */,
 				813327987C7C9773B6B471F3 /* Frameworks */,
 			);
@@ -136,12 +148,12 @@
 		C97301E322F864810071B8E5 /* FoodCalorieApp */ = {
 			isa = PBXGroup;
 			children = (
-				C9743D442317D9BE007A93FE /* CoreData */,
+				C9C4372D23607DF0004ADDF0 /* Extensions */,
+				C9C43728236074FA004ADDF0 /* Services */,
 				C9743D3E2317D79E007A93FE /* Enums */,
 				C94D6C052302BCA1002691A0 /* Model */,
 				C94D6BFE2302BB85002691A0 /* Controller */,
 				C97301F722F865CB0071B8E5 /* View */,
-				C973020022F89E6A0071B8E5 /* Networking */,
 				C97301EB22F864820071B8E5 /* Assets.xcassets */,
 				C97301ED22F864820071B8E5 /* LaunchScreen.storyboard */,
 				C97301E422F864810071B8E5 /* AppDelegate.swift */,
@@ -178,6 +190,7 @@
 			children = (
 				C9743D3F2317D7AE007A93FE /* DateType.swift */,
 				C9743D5523181DE5007A93FE /* MacroDataType.swift */,
+				C9C4373123607FC9004ADDF0 /* Font.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -189,8 +202,61 @@
 				C9743D4E2317DBAF007A93FE /* Day+CoreDataProperties.swift */,
 				C9743D4F2317DBAF007A93FE /* Meals+CoreDataClass.swift */,
 				C9743D502317DBAF007A93FE /* Meals+CoreDataProperties.swift */,
+				C9743D412317D82B007A93FE /* FoodCalorieApp.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		C9C4372023606B8A004ADDF0 /* StartViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C97301E622F864810071B8E5 /* StartViewController.swift */,
+			);
+			path = StartViewController;
+			sourceTree = "<group>";
+		};
+		C9C4372123606B9F004ADDF0 /* TableController */ = {
+			isa = PBXGroup;
+			children = (
+				C9F4D3C222F97EF000E094E5 /* TableController.swift */,
+				C9C4372623607194004ADDF0 /* TC&Extensions.swift */,
+			);
+			path = TableController;
+			sourceTree = "<group>";
+		};
+		C9C4372223606BB6004ADDF0 /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C958E69822FC5B0C006388F9 /* DetailViewController.swift */,
+			);
+			path = DetailViewController;
+			sourceTree = "<group>";
+		};
+		C9C4372323606BCB004ADDF0 /* ResultViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C97301FA22F87C7F0071B8E5 /* ResultViewController.swift */,
+				C9C4372423606E0F004ADDF0 /* RVC&Extensions.swift */,
+			);
+			path = ResultViewController;
+			sourceTree = "<group>";
+		};
+		C9C43728236074FA004ADDF0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C973020022F89E6A0071B8E5 /* Networking */,
+				C9C4372923607529004ADDF0 /* AlertService.swift */,
+				C9C4372B23607A45004ADDF0 /* CoreDataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C9C4372D23607DF0004ADDF0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C9C4372E23607E05004ADDF0 /* UIVIewExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,20 +376,26 @@
 				C97301E722F864810071B8E5 /* StartViewController.swift in Sources */,
 				C9743D402317D7AE007A93FE /* DateType.swift in Sources */,
 				C94D6C0B2302C3BF002691A0 /* TableViews.swift in Sources */,
+				C9C4372723607194004ADDF0 /* TC&Extensions.swift in Sources */,
 				C9743D532317DBAF007A93FE /* Meals+CoreDataClass.swift in Sources */,
 				C9743D5623181DE5007A93FE /* MacroDataType.swift in Sources */,
 				C97301E522F864810071B8E5 /* AppDelegate.swift in Sources */,
 				C9743D512317DBAF007A93FE /* Day+CoreDataClass.swift in Sources */,
 				C948EFA122FAC61400179711 /* TableViewCell.swift in Sources */,
 				C94D6C092302BD40002691A0 /* StartView.swift in Sources */,
+				C9C4372F23607E05004ADDF0 /* UIVIewExtensions.swift in Sources */,
 				C94AFF882300671200C13B62 /* PostNetworking.swift in Sources */,
 				C9743D522317DBAF007A93FE /* Day+CoreDataProperties.swift in Sources */,
 				C945F43223030F47001CBABB /* Object.swift in Sources */,
 				C973020222F89E940071B8E5 /* Networking.swift in Sources */,
+				C9C4372C23607A45004ADDF0 /* CoreDataService.swift in Sources */,
+				C9C4373223607FC9004ADDF0 /* Font.swift in Sources */,
 				C9540EDC231A6E2C0058C941 /* ResultView.swift in Sources */,
 				C9743D432317D82B007A93FE /* FoodCalorieApp.xcdatamodeld in Sources */,
+				C9C4372523606E0F004ADDF0 /* RVC&Extensions.swift in Sources */,
 				C94AFF8A2300778900C13B62 /* NetworkingGetResponse.swift in Sources */,
 				C97301FB22F87C7F0071B8E5 /* ResultViewController.swift in Sources */,
+				C9C4372A23607529004ADDF0 /* AlertService.swift in Sources */,
 				C9743D542317DBAF007A93FE /* Meals+CoreDataProperties.swift in Sources */,
 				C958E69922FC5B0C006388F9 /* DetailViewController.swift in Sources */,
 				C94AFF8623005EEE00C13B62 /* ResultCell.swift in Sources */,

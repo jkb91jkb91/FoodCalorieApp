@@ -64,16 +64,25 @@ class ResultView : UIView {
         addSubview(searchbar)
         addSubview(collectionView)
         topView.addSubview(arrowButton)
-        topView.topAnchor.constraint(equalTo: topAnchor, constant:  0).isActive = true
-        topView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
-        topView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
-        topView.bottomAnchor.constraint(equalTo: searchbar.topAnchor, constant: 0).isActive = true
-        searchbar.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 0).isActive = true
-        searchbar.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        searchbar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
-        arrowButton.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 20).isActive = true
-        arrowButton.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -5).isActive = true
-        arrowButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        arrowButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        topView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalTo(searchbar.snp.top)
+        }
+        
+        searchbar.snp.makeConstraints { (make) in
+            make.bottom.equalTo(collectionView.snp.top)
+            make.centerX.equalToSuperview()
+            make.leading.equalToSuperview()
+        }
+        
+        arrowButton.snp.makeConstraints { (make) in
+            make.leading.equalTo(topView.snp.leading).offset(20)
+            make.bottom.equalTo(topView.snp.bottom).offset(-5)
+            make.height.equalTo(50)
+            make.width.equalTo(50)
+        }
     }
 }

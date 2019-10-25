@@ -47,7 +47,7 @@ class TableController: UIViewController  {
         
         setupUI()
         
-        let date = takeDate(type: .normal, dateString: nil)
+        let date = showDate(type: .normal, dateString: nil)
         print(date)
         
         
@@ -77,10 +77,11 @@ class TableController: UIViewController  {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.table.reloadData()
+            self.updateLabels()
+        }
         
-        table.reloadData()
-        updateLabels()
-    
     }
     
 //MARK:-UISetup
@@ -98,24 +99,12 @@ class TableController: UIViewController  {
 //MARK:-TargetActions
     
     @objc func showAlert() {
-        let alert = UIAlertController(title: "Choose Method", message: nil, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Custom Meal", style: .default) { (_) in
-            let detailVC = DetailViewController()
-            detailVC.current = self.currentState
-            self.present(detailVC, animated: true, completion: nil)}
-        let action2 = UIAlertAction(title: "Use DataBase", style: .default) { (_) in
-            let resultVC = ResultViewController()
-            resultVC.current = self.currentState
-            self.present(resultVC, animated: true, completion: nil)
-        }
-        alert.addAction(action)
-        alert.addAction(action2)
-        present(alert, animated: true, completion: nil)
+        AlertService.showAlert(vc: self, currentDay: currentState!)
     }
    
     @objc func rightArrowAction() {
         let current = currentState!.wartosc
-        let plusOneDay = takeDate(type: .forward, dateString: current)
+        let plusOneDay = showDate(type: .forward, dateString: current)
         print("plusOneDay = \(plusOneDay)")
         let fetch :NSFetchRequest<Day> = Day.fetchRequest()
         fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Day.wartosc), plusOneDay)
@@ -144,7 +133,7 @@ class TableController: UIViewController  {
     
     @objc func leftAction() {
         let current = currentState!.wartosc
-        let backOneDay = takeDate(type: .back, dateString: current)
+        let backOneDay = showDate(type: .back, dateString: current)
         print("plusOneDay = \(backOneDay)")
         let fetch :NSFetchRequest<Day> = Day.fetchRequest()
         fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Day.wartosc), backOneDay)
@@ -170,11 +159,10 @@ class TableController: UIViewController  {
     
     //MARK: -Functions
 
-       func takeDate(type: DateType, dateString: String?) -> String {
+       func showDate(type: DateType, dateString: String?) -> String {
            switch type {
            case .normal:
                let today = Date()
-               let calendar = Calendar.current
                let dateFormatter = DateFormatter()
                dateFormatter.dateStyle = .short
                let dateFromString = dateFormatter.string(from: today)
@@ -255,58 +243,4 @@ class TableController: UIViewController  {
             return calSum
         }
     }
-}
-
-//MARK: -UITableViweDataSource extension
-
-extension TableController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          
-          guard let meals = currentState?.meals else {
-              return 0
-          }
-          return meals.count
-      }
-      
-      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-          
-        guard let cell = table.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TableViewCell else {
-              return UITableViewCell() }
-          
-          guard let meals = currentState?.meals?[indexPath.row] as? Meals
-              else {
-              return cell
-              }
-      
-          cell.updateCell(meal: meals)
-
-          return cell
-      }
-}
-
-//MARK: - UITableViewDelegate extension
-
-extension TableController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-           if editingStyle == .delete {
-               
-               guard let toRemove = currentState?.meals![indexPath.row] as? Meals else {
-                   return
-               }
-            context.delete(toRemove)
-               do {
-                   try context.save()
-                   table.deleteRows(at: [indexPath], with: .automatic)
-               } catch let error as NSError {
-                   print("\(error)")
-               }
-           }
-       }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-           
-           return CGFloat(100)
-       }
 }

@@ -8,7 +8,7 @@
 //MARK:-Modules
 
 import UIKit
-import  SnapKit
+import SnapKit
 
 //MARK:-Class
 
@@ -27,7 +27,7 @@ class StartView: UIView {
   
 //MARK:-UIElements
     
-    let button: UILabel = {
+    let label: UILabel = {
         let view = UILabel()
         view.layer.backgroundColor =  UIColor.red.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -36,18 +36,19 @@ class StartView: UIView {
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.white.cgColor
         view.backgroundColor = .white
-        view.text = "Count Your Macros"
+        view.text = "Count your calories"
         view.textColor = UIColor.black
         view.textAlignment = .center
         view.font = UIFont(name: "Noteworthy-Bold", size: 30)
         return view
         }()
+ 
     
 //MARK:-Function-addConstraints
     
     func addConstraints() {
-        self.addSubview(button)
-        button.snp.makeConstraints { (make) in
+        self.addSubview(label)
+        label.snp.makeConstraints { (make) in
         make.top.equalToSuperview().offset(250)
         make.centerX.equalToSuperview()
         make.width.equalTo(300)

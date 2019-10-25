@@ -6,8 +6,11 @@
 //  Copyright © 2019 XCodeClub. All rights reserved.
 //
 
-import Foundation
+//MARK:-Module
 
+import Foundation
+ 
+//Mark:-Struct
 
 struct GetResponse {
     
@@ -22,8 +25,6 @@ struct GetResponse {
             print(i)
             food.append(i.food)
         }
-
         self.posts = food
-        
     }
 }

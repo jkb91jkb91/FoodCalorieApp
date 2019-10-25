@@ -145,10 +145,13 @@ class ResultCell: UICollectionViewCell {
         addSubview(carbTextlabel)
         addSubview(fatTextlabel)
       
-        Namelabel.topAnchor.constraint(equalTo: topAnchor, constant: 2).isActive = true
-        Namelabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        Namelabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10).isActive = true
-        Namelabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        Namelabel.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(2)
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(10)
+            make.height.equalTo(30)
+        }
  
         separatorView.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview()

@@ -9,6 +9,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 //MARK:-Class
 
@@ -100,39 +101,54 @@ class ViewForDetailViewController: UIView {
         addSubview(fatField)
         addSubview(backBtn)
         
-        productField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        productField.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -200).isActive = true
-        productField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        productField.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        productField.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-200)
+            make.height.equalTo(40)
+            make.width.equalTo(150)
+        }
         
-        saveBtn.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        saveBtn.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 80).isActive = true
-        saveBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        saveBtn.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        saveBtn.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(80)
+            make.height.equalTo(40)
+            make.width.equalTo(150)
+        }
         
-        calorieField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        calorieField.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -150).isActive = true
-        calorieField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        calorieField.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        calorieField.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-150)
+            make.height.equalTo(40)
+            make.width.equalTo(150)
+        }
         
-        proteinField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        proteinField.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -100).isActive = true
-        proteinField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        proteinField.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        proteinField.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-100)
+            make.height.equalTo(40)
+            make.width.equalTo(150)
+        }
+  
+        carbField.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-50)
+            make.height.equalTo(40)
+            make.width.equalTo(150)
+        }
         
-        carbField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        carbField.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -50).isActive = true
-        carbField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        carbField.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        fatField.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.height.equalTo(40)
+            make.width.equalTo(150)
+        }
+  
+        backBtn.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(50)
+            make.leading.equalToSuperview().offset(20)
+            make.height.equalTo(25)
+            make.width.equalTo(25)
+        }
         
-        fatField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        fatField.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
-        fatField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        fatField.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        
-        backBtn.topAnchor.constraint(equalTo: topAnchor, constant: 50).isActive = true
-        backBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        backBtn.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        backBtn.widthAnchor.constraint(equalToConstant: 25).isActive = true
     }
 }

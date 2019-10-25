@@ -37,14 +37,18 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
+        setupUI()
+    }
+//MARK:-SetupUI
+    func setupUI(){
         productField.delegate = self
         calorieField.delegate = self
         saveBtn.addTarget(self, action: #selector(Save), for: .touchUpInside)
-        backBtn.addTarget(self, action: #selector(back), for: .touchUpInside)
-        
+        backBtn.addTarget(self, action: #selector(showPreviousScreen), for: .touchUpInside)
     }
-
+    
+//MARK:-TargetActions
     
     @objc func Save() {
         let meal = Meals(context: context)
@@ -64,11 +68,9 @@ class DetailViewController: UIViewController {
             print("\(error)")
         }
         dismiss(animated: true , completion: nil)
-    
-        
     }
     
-    @objc func back() {
+    @objc func showPreviousScreen() {
         dismiss(animated: true , completion: nil)
     }
     
@@ -77,7 +79,6 @@ class DetailViewController: UIViewController {
 //MARK:-UITextFieldDelegate extension
 
 extension DetailViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }

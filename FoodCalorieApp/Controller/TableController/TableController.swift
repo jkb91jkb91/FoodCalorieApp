@@ -61,7 +61,6 @@ class TableController: UIViewController  {
                 currentState = dzien
                 try context.save()
                 dateLabel.text = date
-                print("niewie")
             }
             } catch let error as NSError {
             print ( "\(error)")
@@ -90,13 +89,15 @@ class TableController: UIViewController  {
 //MARK:-TargetActions
     
     @objc func showAlert() {
-        AlertService.showAlert(vc: self, currentDay: currentState!)
+        //AlertService.showAlert(vc: self, currentDay: currentState!)
+        AlertService.showAlert2(vc: self, action: {
+            self.presentDetailVC()
+        }, action2: self.presentResultVC)
     }
    
     @objc func rightArrowAction() {
         let current = currentState!.wartosc
         let plusOneDay = showDate(type: .forward, dateString: current)
-        print("plusOneDay = \(plusOneDay)")
         let fetch :NSFetchRequest<Day> = Day.fetchRequest()
         fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Day.wartosc), plusOneDay)
         
@@ -105,14 +106,12 @@ class TableController: UIViewController  {
             if result.count > 0 {
                 currentState = result.first
                 dateLabel.text = currentState?.wartosc
-                print("miejstuTU")
             } else {
                 let dzien = Day(context: context)
                 dzien.wartosc = plusOneDay
                 try context.save()
                 self.currentState = dzien
                 dateLabel.text = currentState?.wartosc
-                print("DrugieMiejsc")
             }
         }catch let error as NSError {
             print ( "\(error)")
@@ -124,7 +123,6 @@ class TableController: UIViewController  {
     @objc func leftAction() {
         let current = currentState!.wartosc
         let backOneDay = showDate(type: .back, dateString: current)
-        print("plusOneDay = \(backOneDay)")
         let fetch :NSFetchRequest<Day> = Day.fetchRequest()
         fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Day.wartosc), backOneDay)
         
@@ -148,6 +146,19 @@ class TableController: UIViewController  {
     }
     
     //MARK: -Functions
+    
+    func presentDetailVC() {
+        let detailVC = DetailViewController()
+        detailVC.current = currentState
+        detailVC.delegate = self 
+        self.present(detailVC, animated: true, completion: nil)
+    }
+    func presentResultVC() {
+        let resultVC = ResultViewController()
+        resultVC.current = currentState
+        resultVC.insertdelegate = self
+        self.present(resultVC, animated: true, completion: nil)
+    }
 
        func showDate(type: DateType, dateString: String?) -> String {
            switch type {
@@ -210,5 +221,24 @@ class TableController: UIViewController  {
             }
             return calSum
         }
+    }
+}
+
+extension TableController: InsertProtocol {
+    func insertCell() {
+        table.beginUpdates()
+        let row = numberOfRows() - 1
+        table.insertRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+        table.endUpdates()
+    }
+
+}
+
+extension TableController: InsertFromRestProtocol {
+    func insertFromRestCell() {
+         table.beginUpdates()
+               let row = numberOfRows() - 1
+               table.insertRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
+               table.endUpdates()
     }
 }

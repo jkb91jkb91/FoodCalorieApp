@@ -77,6 +77,7 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDelega
         } catch let error as NSError {
             print("\(error)")
         }
+        insertdelegate?.insertFromRestCell()
         dismiss(animated: true , completion: nil)
     }
     

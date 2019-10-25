@@ -9,6 +9,12 @@
 
 import UIKit
 
+//MARK:-protocol
+
+protocol InsertProtocol: class {
+    func insertCell()
+}
+
 //MARK:-Class
 
 class DetailViewController: UIViewController {
@@ -27,6 +33,7 @@ class DetailViewController: UIViewController {
 //Mark:-Properties
     
     var current: Day!
+    weak var delegate: InsertProtocol?
     
 //Mark:-Lifecycle
     
@@ -40,6 +47,7 @@ class DetailViewController: UIViewController {
         setupUI()
     }
 //MARK:-SetupUI
+    
     func setupUI(){
         productField.delegate = self
         calorieField.delegate = self
@@ -66,6 +74,7 @@ class DetailViewController: UIViewController {
         } catch let error as NSError {
             print("\(error)")
         }
+        delegate?.insertCell()
         dismiss(animated: true , completion: nil)
     }
     

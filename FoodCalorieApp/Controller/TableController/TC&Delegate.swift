@@ -9,29 +9,6 @@
 
 import UIKit
 
-//MARK: -UITableViweDataSource extension
-
-extension TableController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          guard let meals = currentState?.meals else {
-              return 0
-          }
-          return meals.count
-      }
-      
-      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-          guard let cell = table.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TableViewCell else {
-              return UITableViewCell() }
-          guard let meals = currentState?.meals?[indexPath.row] as? Meals
-              else {
-              return cell
-              }
-        cell.updateCell(meal: meals)
-        return cell
-      }
-}
-
 //MARK: - UITableViewDelegate extension
 
 extension TableController: UITableViewDelegate {

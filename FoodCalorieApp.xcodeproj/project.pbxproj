@@ -19,9 +19,9 @@
 		C9540EDC231A6E2C0058C941 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9540EDB231A6E2C0058C941 /* ResultView.swift */; };
 		C958E69922FC5B0C006388F9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958E69822FC5B0C006388F9 /* DetailViewController.swift */; };
 		C966F642236384AA00D88F54 /* DateFormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966F641236384AA00D88F54 /* DateFormatterService.swift */; };
-		C966F644236391CB00D88F54 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966F643236391CB00D88F54 /* TimerModel.swift */; };
 		C966F64623639DE400D88F54 /* ImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966F64523639DE400D88F54 /* ImageNames.swift */; };
 		C966F6482363A43700D88F54 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966F6472363A43700D88F54 /* Placeholders.swift */; };
+		C966F64A2363AF7600D88F54 /* TC&DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C966F6492363AF7600D88F54 /* TC&DataSource.swift */; };
 		C97301E522F864810071B8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97301E422F864810071B8E5 /* AppDelegate.swift */; };
 		C97301E722F864810071B8E5 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97301E622F864810071B8E5 /* StartViewController.swift */; };
 		C97301EC22F864820071B8E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97301EB22F864820071B8E5 /* Assets.xcassets */; };
@@ -36,7 +36,7 @@
 		C9743D542317DBAF007A93FE /* Meals+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9743D502317DBAF007A93FE /* Meals+CoreDataProperties.swift */; };
 		C9743D5623181DE5007A93FE /* MacroDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9743D5523181DE5007A93FE /* MacroDataType.swift */; };
 		C9C4372523606E0F004ADDF0 /* RVC&Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4372423606E0F004ADDF0 /* RVC&Extensions.swift */; };
-		C9C4372723607194004ADDF0 /* TC&Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4372623607194004ADDF0 /* TC&Extensions.swift */; };
+		C9C4372723607194004ADDF0 /* TC&Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4372623607194004ADDF0 /* TC&Delegate.swift */; };
 		C9C4372A23607529004ADDF0 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4372923607529004ADDF0 /* AlertService.swift */; };
 		C9C4372C23607A45004ADDF0 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4372B23607A45004ADDF0 /* CoreDataService.swift */; };
 		C9C4372F23607E05004ADDF0 /* UIVIewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4372E23607E05004ADDF0 /* UIVIewExtensions.swift */; };
@@ -58,9 +58,9 @@
 		C9540EDB231A6E2C0058C941 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		C958E69822FC5B0C006388F9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C966F641236384AA00D88F54 /* DateFormatterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterService.swift; sourceTree = "<group>"; };
-		C966F643236391CB00D88F54 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		C966F64523639DE400D88F54 /* ImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNames.swift; sourceTree = "<group>"; };
 		C966F6472363A43700D88F54 /* Placeholders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholders.swift; sourceTree = "<group>"; };
+		C966F6492363AF7600D88F54 /* TC&DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TC&DataSource.swift"; sourceTree = "<group>"; };
 		C97301E122F864810071B8E5 /* FoodCalorieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodCalorieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97301E422F864810071B8E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C97301E622F864810071B8E5 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		C9743D502317DBAF007A93FE /* Meals+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meals+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9743D5523181DE5007A93FE /* MacroDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroDataType.swift; sourceTree = "<group>"; };
 		C9C4372423606E0F004ADDF0 /* RVC&Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RVC&Extensions.swift"; sourceTree = "<group>"; };
-		C9C4372623607194004ADDF0 /* TC&Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TC&Extensions.swift"; sourceTree = "<group>"; };
+		C9C4372623607194004ADDF0 /* TC&Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TC&Delegate.swift"; sourceTree = "<group>"; };
 		C9C4372923607529004ADDF0 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		C9C4372B23607A45004ADDF0 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		C9C4372E23607E05004ADDF0 /* UIVIewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewExtensions.swift; sourceTree = "<group>"; };
@@ -131,7 +131,6 @@
 			children = (
 				C9743D442317D9BE007A93FE /* CoreData */,
 				C945F43123030F47001CBABB /* Object.swift */,
-				C966F643236391CB00D88F54 /* TimerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,7 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				C9F4D3C222F97EF000E094E5 /* TableController.swift */,
-				C9C4372623607194004ADDF0 /* TC&Extensions.swift */,
+				C9C4372623607194004ADDF0 /* TC&Delegate.swift */,
+				C966F6492363AF7600D88F54 /* TC&DataSource.swift */,
 			);
 			path = TableController;
 			sourceTree = "<group>";
@@ -389,7 +389,7 @@
 				C9743D402317D7AE007A93FE /* DateType.swift in Sources */,
 				C94D6C0B2302C3BF002691A0 /* TableViews.swift in Sources */,
 				C966F6482363A43700D88F54 /* Placeholders.swift in Sources */,
-				C9C4372723607194004ADDF0 /* TC&Extensions.swift in Sources */,
+				C9C4372723607194004ADDF0 /* TC&Delegate.swift in Sources */,
 				C9743D532317DBAF007A93FE /* Meals+CoreDataClass.swift in Sources */,
 				C9743D5623181DE5007A93FE /* MacroDataType.swift in Sources */,
 				C97301E522F864810071B8E5 /* AppDelegate.swift in Sources */,
@@ -407,6 +407,7 @@
 				C9540EDC231A6E2C0058C941 /* ResultView.swift in Sources */,
 				C9743D432317D82B007A93FE /* FoodCalorieApp.xcdatamodeld in Sources */,
 				C9C4372523606E0F004ADDF0 /* RVC&Extensions.swift in Sources */,
+				C966F64A2363AF7600D88F54 /* TC&DataSource.swift in Sources */,
 				C94AFF8A2300778900C13B62 /* NetworkingGetResponse.swift in Sources */,
 				C97301FB22F87C7F0071B8E5 /* ResultViewController.swift in Sources */,
 				C9C4372A23607529004ADDF0 /* AlertService.swift in Sources */,
@@ -414,7 +415,6 @@
 				C958E69922FC5B0C006388F9 /* DetailViewController.swift in Sources */,
 				C94AFF8623005EEE00C13B62 /* ResultCell.swift in Sources */,
 				C94D6C0D2302CED7002691A0 /* ViewForDetailViewController.swift in Sources */,
-				C966F644236391CB00D88F54 /* TimerModel.swift in Sources */,
 				C9F4D3C322F97EF000E094E5 /* TableController.swift in Sources */,
 				C966F642236384AA00D88F54 /* DateFormatterService.swift in Sources */,
 			);

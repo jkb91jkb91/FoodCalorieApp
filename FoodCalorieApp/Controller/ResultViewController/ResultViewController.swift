@@ -10,6 +10,9 @@
 
 import UIKit
 
+protocol InsertFromRestProtocol: class {
+    func insertFromRestCell()
+}
 //MARK:-Class
 
 class ResultViewController: UINavigationController {
@@ -26,7 +29,7 @@ class ResultViewController: UINavigationController {
     let resultcellIdentifier = "resultCell"
     var post = [Food]()
     var current: Day!
-    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var insertdelegate: InsertFromRestProtocol?
     
 //MARK:-Lifecycle
     

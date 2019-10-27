@@ -10,6 +10,8 @@
 
 import UIKit
 
+//MARK:-protocol
+
 protocol InsertFromRestProtocol: class {
     func insertFromRestCell()
 }
@@ -28,7 +30,7 @@ class ResultViewController: UINavigationController {
     
     let resultcellIdentifier = "resultCell"
     var post = [Food]()
-    var current: Day!
+    var current: Day?
     var insertdelegate: InsertFromRestProtocol?
     
 //MARK:-Lifecycle
@@ -66,9 +68,7 @@ extension ResultViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
        PostNetworking.getPost(input: searchbar.text!) { (response) in
-              print(response)
-               print(response.posts.count)
-               self.post = response.posts
+              self.post = response.posts
               DispatchQueue.main.async {
                self.collectionView.reloadData()
                }

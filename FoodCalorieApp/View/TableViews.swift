@@ -28,13 +28,13 @@ class  TableViews: UIView {
         let tview = UITableView()
         tview.separatorStyle = .none
         tview.translatesAutoresizingMaskIntoConstraints = false
-        tview.backgroundColor = UIColor.white
+        tview.backgroundColor = UIColor(displayP3Red: 248/255, green: 197/255, blue: 148/255, alpha: 1)
         return tview
     }()
     
     let bottomView: UIView = {
         let view = UIView()
-        view.layer.backgroundColor =  UIColor.green.cgColor
+        view.layer.backgroundColor =  UIColor.orange.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
         view.layer.borderColor = UIColor.lightGray.cgColor
@@ -60,7 +60,7 @@ class  TableViews: UIView {
     
     let topView: UIView = {
         let view = UIView()
-        view.layer.backgroundColor =  UIColor.green.cgColor
+        view.layer.backgroundColor =  UIColor.orange.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
         view.layer.borderColor = UIColor.lightGray.cgColor

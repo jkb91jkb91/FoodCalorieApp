@@ -27,13 +27,13 @@ class ResultView : UIView {
         let width = Int(UIScreen.main.bounds.width)
         let height = Int(UIScreen.main.bounds.height)
         let cview = UICollectionView(frame: CGRect(x: 0, y: 150, width: width, height: height), collectionViewLayout: UICollectionViewFlowLayout())
-        cview.backgroundColor = UIColor.white
+        cview.backgroundColor = UIColor(displayP3Red: 248/255, green: 197/255, blue: 148/255, alpha: 1)
         return cview
     }()
     
     let topView: UIView = {
         let view = UIView()
-        view.layer.backgroundColor =  UIColor.green.cgColor
+        view.layer.backgroundColor =  UIColor.orange.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
         view.layer.borderColor = UIColor.lightGray.cgColor
@@ -47,6 +47,7 @@ class ResultView : UIView {
         let view = UISearchBar()
         view.placeholder = Placeholders.searchbarPlaceholder.rawValue
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.backgroundColor = UIColor.orange.cgColor
         return view
     }()
     

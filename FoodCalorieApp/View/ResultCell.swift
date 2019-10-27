@@ -17,6 +17,7 @@ class ResultCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame:frame)
         
+        self.layer.backgroundColor = UIColor.white.cgColor
         addConstraints()
     }
     
@@ -220,24 +221,24 @@ class ResultCell: UICollectionViewCell {
     func updateResultCell(food: Food ) {
         self.Namelabel.text = food.label?.uppercased() ?? ""
         
-        if let cal = food.nutrients.ENERC_KCAL {
+        if let cal = food.nutrients.energy {
             self.calorieTextlabel.text = String(cal.rounded())
         } else { self.calorieTextlabel.text = String(0)
             }
     
-        if let prot = food.nutrients.PROCNT {
+        if let prot = food.nutrients.protein {
             self.proteinTextlabel.text = String(prot.rounded())
         } else {
             self.proteinTextlabel.text = String(0)
         }
         
-        if let carb = food.nutrients.CHOCDF {
+        if let carb = food.nutrients.carbs {
             self.carbTextlabel.text = String(carb.rounded())
         } else {
             self.carbTextlabel.text = String(0)
         }
       
-        if let fat  = food.nutrients.FAT {
+        if let fat  = food.nutrients.fat {
             self.fatTextlabel.text = String(fat.rounded())
             
         } else  {

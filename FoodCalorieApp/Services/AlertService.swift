@@ -9,26 +9,8 @@
 import UIKit
 
 struct AlertService {
-    
-    static func  showAlert(vc: UIViewController, currentDay: Day) {
-        let alert = UIAlertController(title: "Choose Method", message: nil, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Custom Meal", style: .default) { (_) in
-                let detailVC = DetailViewController()
-                detailVC.current = currentDay
-                vc.present(detailVC, animated: true, completion: nil)}
-        let action2 = UIAlertAction(title: "Use DataBase", style: .default) { (_) in
-            let resultVC = ResultViewController()
-            resultVC.current = currentDay
-            vc.present(resultVC, animated: true, completion: nil)
-            }
-        alert.addAction(action)
-        alert.addAction(action2)
-        vc.present(alert, animated:true, completion: nil)
-    }
-    
-    
-    
-    static func  showAlert2(vc: UIViewController, action: @escaping() -> (), action2: @escaping() -> ()) {
+
+    static func  showAlert(vc: UIViewController, action: @escaping() -> (), action2: @escaping() -> ()) {
         let alert = UIAlertController(title: "Choose Method", message: nil, preferredStyle: .alert)
         let action = UIAlertAction(title: "Custom Meal", style: .default) { (alert) in
             action()}
@@ -38,5 +20,4 @@ struct AlertService {
         alert.addAction(action2)
         vc.present(alert, animated:true, completion: nil)
     }
-    
 }

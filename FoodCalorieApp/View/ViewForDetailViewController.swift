@@ -18,7 +18,7 @@ class ViewForDetailViewController: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addConstraints()
-        backgroundColor = .white
+        backgroundColor = UIColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -31,7 +31,10 @@ class NetworkingService {
    
                 do {
                     let json = try JSONDecoder().decode(Object.self, from: data)
-                    completion(json)
+                    DispatchQueue.main.async {
+                         completion(json)
+                    }
+                   
                 } catch let error as NSError {
                     print(error.localizedDescription)
                     

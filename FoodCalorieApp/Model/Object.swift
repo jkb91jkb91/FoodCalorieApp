@@ -10,25 +10,18 @@ import Foundation
 
 struct Nutrient: Decodable {
     
-    var ENERC_KCAL : Float?
-    var PROCNT : Float?
-    var FAT : Float?
-    var CHOCDF: Float?
+    var energy : Float?
+    var protein : Float?
+    var fat : Float?
+    var carbs: Float?
   
-    
-    init(energ:Float, proc: Float, Fat: Float, Choc: Float, FIb: Float) {
-        self.ENERC_KCAL = energ
-        self.PROCNT = proc
-        self.FAT = Fat
-        self.CHOCDF = Choc
-   
-    }
+ 
     
     enum CodingKeys: String, CodingKey {
-        case ENERC_KCAL = "ENERC_KCAL"
-        case PROCNT = "PROCNT"
-        case FAT = "FAT"
-        case CHOCDF = "CHOCDF"
+        case energy = "ENERC_KCAL"
+        case protein = "PROCNT"
+        case fat = "FAT"
+        case carbs = "CHOCDF"
    
     }
   

@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
 
 //Mark:-Properties
     
-    var current: Day!
+    var current: Day?
     weak var delegate: InsertProtocol?
     
 //Mark:-Lifecycle
@@ -51,6 +51,9 @@ class DetailViewController: UIViewController {
     func setupUI(){
         productField.delegate = self
         calorieField.delegate = self
+        proteinField.delegate = self
+        carbField.delegate = self
+        fatField.delegate = self
         saveBtn.addTarget(self, action: #selector(Save), for: .touchUpInside)
         backBtn.addTarget(self, action: #selector(showPreviousScreen), for: .touchUpInside)
     }
@@ -65,9 +68,9 @@ class DetailViewController: UIViewController {
         meal.carbField = Int16(carbField.text!) ?? 0
         meal.fatField = Int16(fatField.text!) ?? 0
     
-        if let meals = current.meals?.mutableCopy() as? NSMutableOrderedSet {
+        if let meals = current?.meals?.mutableCopy() as? NSMutableOrderedSet {
             meals.add(meal)
-            current.meals = meals
+            current?.meals = meals
         }
         do {
             try context.save()
@@ -88,6 +91,16 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        productField.resignFirstResponder()
+        calorieField.resignFirstResponder()
+        proteinField.resignFirstResponder()
+        carbField.resignFirstResponder()
+        fatField.resignFirstResponder()
         return true
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+   
 }

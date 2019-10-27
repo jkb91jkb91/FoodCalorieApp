@@ -7,5 +7,5 @@ Used Stack:
 - Programmatic approach - Snapkit(Cocoapods)
 - UITableView, UICollectionView
 - Patterns: MVC, delegation&protocol to update tableView
-- CoreData
+- CoreData with relations, we can store saved dayPlans for every day
 -GCD and URLSession and completion handlers

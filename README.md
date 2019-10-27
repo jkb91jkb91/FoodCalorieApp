@@ -8,5 +8,4 @@ Used Stack:
 - UITableView, UICollectionView
 - Patterns: MVC, delegation&protocol to update tableView
 - CoreData with relations, we can store saved dayPlans for every day
-
 -GCD and URLSession and completion handlers

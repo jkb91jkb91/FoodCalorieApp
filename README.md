@@ -9,3 +9,6 @@ Used Stack:
 - Patterns: MVC, delegation&protocol to update tableView
 - CoreData with relations, we can store saved dayPlans for every day
 -GCD and URLSession and completion handlers
+
+
+![image](https://github.com/jkb91jkb91/FoodCalorieApp/assets/32479224/881f7349-ccb5-41ec-b756-874988ec5e7d)
